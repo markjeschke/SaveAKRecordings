@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F71D19271EF351A300523ACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19261EF351A300523ACB /* AppDelegate.swift */; };
+		F71D19291EF351A300523ACB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19281EF351A300523ACB /* ViewController.swift */; };
+		F71D192C1EF351A300523ACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192A1EF351A300523ACB /* Main.storyboard */; };
+		F71D192E1EF351A300523ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F71D192D1EF351A300523ACB /* Assets.xcassets */; };
+		F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */; };
+		F71D193C1EF351A300523ACB /* SaveAKRecordingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D193B1EF351A300523ACB /* SaveAKRecordingTests.swift */; };
+		F71D19471EF351A300523ACB /* SaveAKRecordingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19461EF351A300523ACB /* SaveAKRecordingUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F71D19381EF351A300523ACB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F71D191B1EF351A300523ACB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F71D19221EF351A300523ACB;
+			remoteInfo = SaveAKRecording;
+		};
+		F71D19431EF351A300523ACB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F71D191B1EF351A300523ACB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F71D19221EF351A300523ACB;
+			remoteInfo = SaveAKRecording;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F71D19231EF351A300523ACB /* SaveAKRecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveAKRecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D19261EF351A300523ACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F71D19281EF351A300523ACB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F71D192B1EF351A300523ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F71D192D1EF351A300523ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F71D19301EF351A300523ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F71D19321EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F71D19371EF351A300523ACB /* SaveAKRecordingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveAKRecordingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D193B1EF351A300523ACB /* SaveAKRecordingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAKRecordingTests.swift; sourceTree = "<group>"; };
+		F71D193D1EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F71D19421EF351A300523ACB /* SaveAKRecordingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveAKRecordingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71D19461EF351A300523ACB /* SaveAKRecordingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAKRecordingUITests.swift; sourceTree = "<group>"; };
+		F71D19481EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F71D19201EF351A300523ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71D19341EF351A300523ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71D193F1EF351A300523ACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F71D191A1EF351A300523ACB = {
+			isa = PBXGroup;
+			children = (
+				F71D19251EF351A300523ACB /* SaveAKRecording */,
+				F71D193A1EF351A300523ACB /* SaveAKRecordingTests */,
+				F71D19451EF351A300523ACB /* SaveAKRecordingUITests */,
+				F71D19241EF351A300523ACB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F71D19241EF351A300523ACB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F71D19231EF351A300523ACB /* SaveAKRecording.app */,
+				F71D19371EF351A300523ACB /* SaveAKRecordingTests.xctest */,
+				F71D19421EF351A300523ACB /* SaveAKRecordingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F71D19251EF351A300523ACB /* SaveAKRecording */ = {
+			isa = PBXGroup;
+			children = (
+				F71D19261EF351A300523ACB /* AppDelegate.swift */,
+				F71D19281EF351A300523ACB /* ViewController.swift */,
+				F71D192A1EF351A300523ACB /* Main.storyboard */,
+				F71D192D1EF351A300523ACB /* Assets.xcassets */,
+				F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */,
+				F71D19321EF351A300523ACB /* Info.plist */,
+			);
+			path = SaveAKRecording;
+			sourceTree = "<group>";
+		};
+		F71D193A1EF351A300523ACB /* SaveAKRecordingTests */ = {
+			isa = PBXGroup;
+			children = (
+				F71D193B1EF351A300523ACB /* SaveAKRecordingTests.swift */,
+				F71D193D1EF351A300523ACB /* Info.plist */,
+			);
+			path = SaveAKRecordingTests;
+			sourceTree = "<group>";
+		};
+		F71D19451EF351A300523ACB /* SaveAKRecordingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F71D19461EF351A300523ACB /* SaveAKRecordingUITests.swift */,
+				F71D19481EF351A300523ACB /* Info.plist */,
+			);
+			path = SaveAKRecordingUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F71D19221EF351A300523ACB /* SaveAKRecording */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F71D194B1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecording" */;
+			buildPhases = (
+				F71D191F1EF351A300523ACB /* Sources */,
+				F71D19201EF351A300523ACB /* Frameworks */,
+				F71D19211EF351A300523ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaveAKRecording;
+			productName = SaveAKRecording;
+			productReference = F71D19231EF351A300523ACB /* SaveAKRecording.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F71D19361EF351A300523ACB /* SaveAKRecordingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F71D194E1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingTests" */;
+			buildPhases = (
+				F71D19331EF351A300523ACB /* Sources */,
+				F71D19341EF351A300523ACB /* Frameworks */,
+				F71D19351EF351A300523ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F71D19391EF351A300523ACB /* PBXTargetDependency */,
+			);
+			name = SaveAKRecordingTests;
+			productName = SaveAKRecordingTests;
+			productReference = F71D19371EF351A300523ACB /* SaveAKRecordingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F71D19411EF351A300523ACB /* SaveAKRecordingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F71D19511EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingUITests" */;
+			buildPhases = (
+				F71D193E1EF351A300523ACB /* Sources */,
+				F71D193F1EF351A300523ACB /* Frameworks */,
+				F71D19401EF351A300523ACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F71D19441EF351A300523ACB /* PBXTargetDependency */,
+			);
+			name = SaveAKRecordingUITests;
+			productName = SaveAKRecordingUITests;
+			productReference = F71D19421EF351A300523ACB /* SaveAKRecordingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F71D191B1EF351A300523ACB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Mark Jeschke";
+				TargetAttributes = {
+					F71D19221EF351A300523ACB = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = JZRGG2W4BA;
+						ProvisioningStyle = Automatic;
+					};
+					F71D19361EF351A300523ACB = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = JZRGG2W4BA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F71D19221EF351A300523ACB;
+					};
+					F71D19411EF351A300523ACB = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = JZRGG2W4BA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F71D19221EF351A300523ACB;
+					};
+				};
+			};
+			buildConfigurationList = F71D191E1EF351A300523ACB /* Build configuration list for PBXProject "SaveAKRecording" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F71D191A1EF351A300523ACB;
+			productRefGroup = F71D19241EF351A300523ACB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F71D19221EF351A300523ACB /* SaveAKRecording */,
+				F71D19361EF351A300523ACB /* SaveAKRecordingTests */,
+				F71D19411EF351A300523ACB /* SaveAKRecordingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F71D19211EF351A300523ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */,
+				F71D192E1EF351A300523ACB /* Assets.xcassets in Resources */,
+				F71D192C1EF351A300523ACB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71D19351EF351A300523ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71D19401EF351A300523ACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F71D191F1EF351A300523ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F71D19291EF351A300523ACB /* ViewController.swift in Sources */,
+				F71D19271EF351A300523ACB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71D19331EF351A300523ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F71D193C1EF351A300523ACB /* SaveAKRecordingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71D193E1EF351A300523ACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F71D19471EF351A300523ACB /* SaveAKRecordingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F71D19391EF351A300523ACB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F71D19221EF351A300523ACB /* SaveAKRecording */;
+			targetProxy = F71D19381EF351A300523ACB /* PBXContainerItemProxy */;
+		};
+		F71D19441EF351A300523ACB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F71D19221EF351A300523ACB /* SaveAKRecording */;
+			targetProxy = F71D19431EF351A300523ACB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F71D192A1EF351A300523ACB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F71D192B1EF351A300523ACB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F71D19301EF351A300523ACB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F71D19491EF351A300523ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F71D194A1EF351A300523ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F71D194C1EF351A300523ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				INFOPLIST_FILE = SaveAKRecording/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecording;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F71D194D1EF351A300523ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				INFOPLIST_FILE = SaveAKRecording/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecording;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		F71D194F1EF351A300523ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				INFOPLIST_FILE = SaveAKRecordingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaveAKRecording.app/SaveAKRecording";
+			};
+			name = Debug;
+		};
+		F71D19501EF351A300523ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				INFOPLIST_FILE = SaveAKRecordingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaveAKRecording.app/SaveAKRecording";
+			};
+			name = Release;
+		};
+		F71D19521EF351A300523ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				INFOPLIST_FILE = SaveAKRecordingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SaveAKRecording;
+			};
+			name = Debug;
+		};
+		F71D19531EF351A300523ACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				INFOPLIST_FILE = SaveAKRecordingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SaveAKRecording;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F71D191E1EF351A300523ACB /* Build configuration list for PBXProject "SaveAKRecording" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71D19491EF351A300523ACB /* Debug */,
+				F71D194A1EF351A300523ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F71D194B1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecording" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71D194C1EF351A300523ACB /* Debug */,
+				F71D194D1EF351A300523ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F71D194E1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71D194F1EF351A300523ACB /* Debug */,
+				F71D19501EF351A300523ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F71D19511EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71D19521EF351A300523ACB /* Debug */,
+				F71D19531EF351A300523ACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F71D191B1EF351A300523ACB /* Project object */;
+}
