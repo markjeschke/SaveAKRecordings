@@ -22,16 +22,12 @@ class EmailComposer: NSObject, MFMailComposeViewControllerDelegate {
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = self
         
-        var emailSubject: String
-        var emailRecipients: String
-        var emailMessageBody: String
-        
-        emailSubject = "\(self.conductor.exportedAudioFileName)"
-        emailRecipients = "markjeschke@yahoo.com"
-        emailMessageBody = "<p>Check out my recording made with <a href=\'http://audiokit.io/'>AudioKit!</a><br /><br />\(String(describing: self.conductor.audioFileDuration))"
+        let emailSubject = "\(self.conductor.exportedAudioFileName)"
+        //let emailRecipients = "your-email@some-address.com"
+        let emailMessageBody = "<p>Check out my recording made with <a href=\'http://audiokit.io/'>AudioKit!</a><br /><br />\(String(describing: self.conductor.audioFileDuration))"
         
         mail.setSubject(emailSubject)
-        mail.setToRecipients([emailRecipients])
+        //mail.setToRecipients([emailRecipients])
         mail.setMessageBody(emailMessageBody, isHTML: true)
         
         let filePath = "\(String(describing: conductor.exportedAudioFilePath))/\(conductor.exportedAudioFile)"

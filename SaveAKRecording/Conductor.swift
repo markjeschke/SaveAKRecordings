@@ -93,9 +93,9 @@ class Conductor {
         
         // Connect the booster output to the delay node.
         delay = AKDelay(booster)
-        delay.time = 1.0 // seconds
+        delay.time = 0.12 // seconds
         delay.feedback  = 0.1 // Normalized Value 0 - 1
-        delay.dryWetMix = 0.2  // Normalized Value 0 - 1
+        delay.dryWetMix = 0.3  // Normalized Value 0 - 1
         delay.lowPassCutoff = 15000
         
         // Connect the mixer output and the delay effect to its own delayMixer.
@@ -105,21 +105,27 @@ class Conductor {
         
         // Connect the delayMixer output to the reverb node.
         reverb = AKReverb(delayMixer)
-        reverb.dryWetMix = 0.5
-        reverb.loadFactoryPreset(.largeRoom)
+        reverb.dryWetMix = 0.1
+        reverb.loadFactoryPreset(.mediumChamber)
         
         // Connect the mixer output and the reverb effect to its own reverbMixer.
         // mixer output 0 << 0.5 >> 1.0 reverb effect
         reverbMixer = AKDryWetMixer(delayMixer, reverb)
         reverbMixer.balance = 0.5
         
+        // Connect reverbMixer to the distortion node.
         distortion = AKDistortion(reverbMixer)
         distortion.squaredTerm = 0.7
-        distortion.polynomialMix = 0.7
-        distortion.finalMix = 0.6
+        distortion.decay = 4.0
+        distortion.softClipGain = 2.0
+        distortion.polynomialMix = 0.0
+        distortion.finalMix = 0.8
+        distortion.decimation = 0.1
+        distortion.decimationMix = 0.3
         distortionMixer = AKDryWetMixer(reverbMixer, distortion)
         distortionMixer.balance = 0.5
         
+        // Connect the recorder to the output of the distortionMixer.
         recorder = try? AKNodeRecorder(node: distortionMixer)
         if let file = recorder.audioFile {
             player = try? AKAudioPlayer(file: file)
@@ -127,7 +133,7 @@ class Conductor {
         player.looping = true
         player.completionHandler = playingEnded
         
-        // Mix the distortionMixer and player node into an outputMixer.
+        // Mix the distortionMixer and player node into the outputMixer.
         outputMixer = AKMixer(distortionMixer, player)
         
         // Connect the end of the audio chain to the AudioKit engine output.
