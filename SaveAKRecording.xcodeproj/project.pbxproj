@@ -12,26 +12,39 @@
 		F71D192C1EF351A300523ACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192A1EF351A300523ACB /* Main.storyboard */; };
 		F71D192E1EF351A300523ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F71D192D1EF351A300523ACB /* Assets.xcassets */; };
 		F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */; };
-		F71D193C1EF351A300523ACB /* SaveAKRecordingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D193B1EF351A300523ACB /* SaveAKRecordingTests.swift */; };
-		F71D19471EF351A300523ACB /* SaveAKRecordingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19461EF351A300523ACB /* SaveAKRecordingUITests.swift */; };
+		F71D19551EF3530100523ACB /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19541EF3530100523ACB /* Conductor.swift */; };
+		F71D195C1EF3532A00523ACB /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; };
+		F71D195D1EF3532A00523ACB /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F71D19601EF3532A00523ACB /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19581EF3532A00523ACB /* RxCocoa.framework */; };
+		F71D19611EF3532A00523ACB /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19581EF3532A00523ACB /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F71D19621EF3532A00523ACB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19591EF3532A00523ACB /* RxDataSources.framework */; };
+		F71D19631EF3532A00523ACB /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19591EF3532A00523ACB /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F71D19641EF3532A00523ACB /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D195A1EF3532A00523ACB /* RxSwift.framework */; };
+		F71D19651EF3532A00523ACB /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D195A1EF3532A00523ACB /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D196B1EF3536F00523ACB /* InstrumentType.swift */; };
+		F71D19701EF3536F00523ACB /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D196C1EF3536F00523ACB /* Instrument.swift */; };
+		F71D19731EF3545300523ACB /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = F71D19721EF3545300523ACB /* Sounds */; };
+		F71D19761EF5A34800523ACB /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19751EF5A34800523ACB /* EmailComposer.swift */; };
+		F71D19811EF62A7E00523ACB /* TimecodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19801EF62A7E00523ACB /* TimecodeFormatter.swift */; };
+		F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = F71D19871EF6394800523ACB /* AudioShareSDK.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F71D19381EF351A300523ACB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F71D191B1EF351A300523ACB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F71D19221EF351A300523ACB;
-			remoteInfo = SaveAKRecording;
+/* Begin PBXCopyFilesBuildPhase section */
+		F71D19681EF3532A00523ACB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F71D19651EF3532A00523ACB /* RxSwift.framework in Embed Frameworks */,
+				F71D19611EF3532A00523ACB /* RxCocoa.framework in Embed Frameworks */,
+				F71D195D1EF3532A00523ACB /* AudioKit.framework in Embed Frameworks */,
+				F71D19631EF3532A00523ACB /* RxDataSources.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F71D19431EF351A300523ACB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F71D191B1EF351A300523ACB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F71D19221EF351A300523ACB;
-			remoteInfo = SaveAKRecording;
-		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F71D19231EF351A300523ACB /* SaveAKRecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveAKRecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,12 +54,21 @@
 		F71D192D1EF351A300523ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F71D19301EF351A300523ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F71D19321EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F71D19371EF351A300523ACB /* SaveAKRecordingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveAKRecordingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F71D193B1EF351A300523ACB /* SaveAKRecordingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAKRecordingTests.swift; sourceTree = "<group>"; };
-		F71D193D1EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F71D19421EF351A300523ACB /* SaveAKRecordingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveAKRecordingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F71D19461EF351A300523ACB /* SaveAKRecordingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAKRecordingUITests.swift; sourceTree = "<group>"; };
-		F71D19481EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F71D19541EF3530100523ACB /* Conductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conductor.swift; sourceTree = "<group>"; };
+		F71D19561EF3532A00523ACB /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = ../Carthage/Build/iOS/AudioKit.framework; sourceTree = "<group>"; };
+		F71D19571EF3532A00523ACB /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = ../Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		F71D19581EF3532A00523ACB /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		F71D19591EF3532A00523ACB /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = ../Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		F71D195A1EF3532A00523ACB /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		F71D195B1EF3532A00523ACB /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = ../Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		F71D196B1EF3536F00523ACB /* InstrumentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentType.swift; sourceTree = "<group>"; };
+		F71D196C1EF3536F00523ACB /* Instrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
+		F71D19721EF3545300523ACB /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		F71D19751EF5A34800523ACB /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
+		F71D19801EF62A7E00523ACB /* TimecodeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimecodeFormatter.swift; sourceTree = "<group>"; };
+		F71D19851EF6394800523ACB /* SaveAKRecording-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SaveAKRecording-Bridging-Header.h"; sourceTree = "<group>"; };
+		F71D19861EF6394800523ACB /* AudioShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioShareSDK.h; sourceTree = "<group>"; };
+		F71D19871EF6394800523ACB /* AudioShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioShareSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,20 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F71D19341EF351A300523ACB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F71D193F1EF351A300523ACB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F71D19641EF3532A00523ACB /* RxSwift.framework in Frameworks */,
+				F71D19601EF3532A00523ACB /* RxCocoa.framework in Frameworks */,
+				F71D195C1EF3532A00523ACB /* AudioKit.framework in Frameworks */,
+				F71D19621EF3532A00523ACB /* RxDataSources.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				F71D19251EF351A300523ACB /* SaveAKRecording */,
-				F71D193A1EF351A300523ACB /* SaveAKRecordingTests */,
-				F71D19451EF351A300523ACB /* SaveAKRecordingUITests */,
 				F71D19241EF351A300523ACB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				F71D19231EF351A300523ACB /* SaveAKRecording.app */,
-				F71D19371EF351A300523ACB /* SaveAKRecordingTests.xctest */,
-				F71D19421EF351A300523ACB /* SaveAKRecordingUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,30 +107,67 @@
 			children = (
 				F71D19261EF351A300523ACB /* AppDelegate.swift */,
 				F71D19281EF351A300523ACB /* ViewController.swift */,
+				F71D19841EF6371400523ACB /* Classes */,
+				F71D19831EF6370800523ACB /* AudioEngine */,
+				F71D19821EF6370000523ACB /* Helpers */,
+				F71D19741EF4440100523ACB /* Models */,
 				F71D192A1EF351A300523ACB /* Main.storyboard */,
 				F71D192D1EF351A300523ACB /* Assets.xcassets */,
 				F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */,
 				F71D19321EF351A300523ACB /* Info.plist */,
+				F71D19721EF3545300523ACB /* Sounds */,
+				F71D19691EF3533900523ACB /* Frameworks */,
 			);
 			path = SaveAKRecording;
 			sourceTree = "<group>";
 		};
-		F71D193A1EF351A300523ACB /* SaveAKRecordingTests */ = {
+		F71D19691EF3533900523ACB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F71D193B1EF351A300523ACB /* SaveAKRecordingTests.swift */,
-				F71D193D1EF351A300523ACB /* Info.plist */,
+				F71D19561EF3532A00523ACB /* AudioKit.framework */,
+				F71D19571EF3532A00523ACB /* RxBlocking.framework */,
+				F71D19581EF3532A00523ACB /* RxCocoa.framework */,
+				F71D19591EF3532A00523ACB /* RxDataSources.framework */,
+				F71D195A1EF3532A00523ACB /* RxSwift.framework */,
+				F71D195B1EF3532A00523ACB /* RxTest.framework */,
 			);
-			path = SaveAKRecordingTests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F71D19451EF351A300523ACB /* SaveAKRecordingUITests */ = {
+		F71D19741EF4440100523ACB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F71D19461EF351A300523ACB /* SaveAKRecordingUITests.swift */,
-				F71D19481EF351A300523ACB /* Info.plist */,
+				F71D196C1EF3536F00523ACB /* Instrument.swift */,
+				F71D196B1EF3536F00523ACB /* InstrumentType.swift */,
 			);
-			path = SaveAKRecordingUITests;
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F71D19821EF6370000523ACB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F71D19861EF6394800523ACB /* AudioShareSDK.h */,
+				F71D19871EF6394800523ACB /* AudioShareSDK.m */,
+				F71D19801EF62A7E00523ACB /* TimecodeFormatter.swift */,
+				F71D19851EF6394800523ACB /* SaveAKRecording-Bridging-Header.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		F71D19831EF6370800523ACB /* AudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				F71D19541EF3530100523ACB /* Conductor.swift */,
+			);
+			name = AudioEngine;
+			sourceTree = "<group>";
+		};
+		F71D19841EF6371400523ACB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F71D19751EF5A34800523ACB /* EmailComposer.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +180,7 @@
 				F71D191F1EF351A300523ACB /* Sources */,
 				F71D19201EF351A300523ACB /* Frameworks */,
 				F71D19211EF351A300523ACB /* Resources */,
+				F71D19681EF3532A00523ACB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -144,42 +190,6 @@
 			productName = SaveAKRecording;
 			productReference = F71D19231EF351A300523ACB /* SaveAKRecording.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F71D19361EF351A300523ACB /* SaveAKRecordingTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F71D194E1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingTests" */;
-			buildPhases = (
-				F71D19331EF351A300523ACB /* Sources */,
-				F71D19341EF351A300523ACB /* Frameworks */,
-				F71D19351EF351A300523ACB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F71D19391EF351A300523ACB /* PBXTargetDependency */,
-			);
-			name = SaveAKRecordingTests;
-			productName = SaveAKRecordingTests;
-			productReference = F71D19371EF351A300523ACB /* SaveAKRecordingTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F71D19411EF351A300523ACB /* SaveAKRecordingUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F71D19511EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingUITests" */;
-			buildPhases = (
-				F71D193E1EF351A300523ACB /* Sources */,
-				F71D193F1EF351A300523ACB /* Frameworks */,
-				F71D19401EF351A300523ACB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F71D19441EF351A300523ACB /* PBXTargetDependency */,
-			);
-			name = SaveAKRecordingUITests;
-			productName = SaveAKRecordingUITests;
-			productReference = F71D19421EF351A300523ACB /* SaveAKRecordingUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,19 +204,8 @@
 					F71D19221EF351A300523ACB = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = JZRGG2W4BA;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
-					};
-					F71D19361EF351A300523ACB = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = JZRGG2W4BA;
-						ProvisioningStyle = Automatic;
-						TestTargetID = F71D19221EF351A300523ACB;
-					};
-					F71D19411EF351A300523ACB = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = JZRGG2W4BA;
-						ProvisioningStyle = Automatic;
-						TestTargetID = F71D19221EF351A300523ACB;
 					};
 				};
 			};
@@ -224,8 +223,6 @@
 			projectRoot = "";
 			targets = (
 				F71D19221EF351A300523ACB /* SaveAKRecording */,
-				F71D19361EF351A300523ACB /* SaveAKRecordingTests */,
-				F71D19411EF351A300523ACB /* SaveAKRecordingUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,21 +234,8 @@
 			files = (
 				F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */,
 				F71D192E1EF351A300523ACB /* Assets.xcassets in Resources */,
+				F71D19731EF3545300523ACB /* Sounds in Resources */,
 				F71D192C1EF351A300523ACB /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F71D19351EF351A300523ACB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F71D19401EF351A300523ACB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,40 +247,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71D19291EF351A300523ACB /* ViewController.swift in Sources */,
+				F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */,
+				F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */,
+				F71D19551EF3530100523ACB /* Conductor.swift in Sources */,
+				F71D19701EF3536F00523ACB /* Instrument.swift in Sources */,
+				F71D19761EF5A34800523ACB /* EmailComposer.swift in Sources */,
 				F71D19271EF351A300523ACB /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F71D19331EF351A300523ACB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F71D193C1EF351A300523ACB /* SaveAKRecordingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F71D193E1EF351A300523ACB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F71D19471EF351A300523ACB /* SaveAKRecordingUITests.swift in Sources */,
+				F71D19811EF62A7E00523ACB /* TimecodeFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F71D19391EF351A300523ACB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F71D19221EF351A300523ACB /* SaveAKRecording */;
-			targetProxy = F71D19381EF351A300523ACB /* PBXContainerItemProxy */;
-		};
-		F71D19441EF351A300523ACB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F71D19221EF351A300523ACB /* SaveAKRecording */;
-			targetProxy = F71D19431EF351A300523ACB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F71D192A1EF351A300523ACB /* Main.storyboard */ = {
@@ -415,11 +376,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SaveAKRecording/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SaveAKRecording/SaveAKRecording-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -428,70 +396,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SaveAKRecording/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SaveAKRecording/SaveAKRecording-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		F71D194F1EF351A300523ACB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = JZRGG2W4BA;
-				INFOPLIST_FILE = SaveAKRecordingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaveAKRecording.app/SaveAKRecording";
-			};
-			name = Debug;
-		};
-		F71D19501EF351A300523ACB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = JZRGG2W4BA;
-				INFOPLIST_FILE = SaveAKRecordingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaveAKRecording.app/SaveAKRecording";
-			};
-			name = Release;
-		};
-		F71D19521EF351A300523ACB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = JZRGG2W4BA;
-				INFOPLIST_FILE = SaveAKRecordingUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = SaveAKRecording;
-			};
-			name = Debug;
-		};
-		F71D19531EF351A300523ACB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = JZRGG2W4BA;
-				INFOPLIST_FILE = SaveAKRecordingUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.SaveAKRecordingUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = SaveAKRecording;
 			};
 			name = Release;
 		};
@@ -514,22 +430,7 @@
 				F71D194D1EF351A300523ACB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		F71D194E1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F71D194F1EF351A300523ACB /* Debug */,
-				F71D19501EF351A300523ACB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		F71D19511EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecordingUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F71D19521EF351A300523ACB /* Debug */,
-				F71D19531EF351A300523ACB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

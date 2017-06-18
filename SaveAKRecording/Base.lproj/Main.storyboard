@@ -1,26 +1,83 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NcP-GZ-f4w">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="6JT-lt-7NX">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NcP-GZ-f4w" customClass="ViewController" customModule="SaveAKRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="awU-hL-SLj"/>
+                        <viewControllerLayoutGuide type="bottom" id="CN6-FZ-gaf"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="xKd-ii-xmo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
+                                <rect key="frame" x="133" y="106" width="109" height="28"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="recordPlayToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="36l-Yh-bU0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
+                                <rect key="frame" x="142" y="159" width="90" height="38"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                <state key="normal" title="Kick"/>
+                                <connections>
+                                    <action selector="triggerKick" destination="NcP-GZ-f4w" eventType="touchDown" id="6Av-lg-GLT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
+                                <rect key="frame" x="137" y="217" width="100" height="38"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                <state key="normal" title="Snare"/>
+                                <connections>
+                                    <action selector="triggerSnare" destination="NcP-GZ-f4w" eventType="touchDown" id="Qr8-bL-7vh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
+                                <rect key="frame" x="57" y="277" width="260" height="38"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                <state key="normal" title="Email Audio"/>
+                                <connections>
+                                    <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="15l-py-KvB" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" id="C1e-0m-wGu"/>
+                            <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="DUq-rk-5bs"/>
+                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="15l-py-KvB" secondAttribute="bottom" constant="22" id="GOp-om-i4X"/>
+                            <constraint firstItem="fVj-r0-gxf" firstAttribute="top" secondItem="kyH-RI-SuY" secondAttribute="bottom" constant="25" id="QBu-4I-EUw"/>
+                            <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="15l-py-KvB" secondAttribute="centerX" id="WB1-dr-5zd"/>
+                            <constraint firstItem="kyH-RI-SuY" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="86" id="cZy-Wh-FPR"/>
+                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leadingMargin" constant="41" id="gSm-AI-qDh"/>
+                            <constraint firstItem="15l-py-KvB" firstAttribute="top" secondItem="fVj-r0-gxf" secondAttribute="bottom" constant="20" id="lHT-f2-8DB"/>
+                            <constraint firstItem="kyH-RI-SuY" firstAttribute="centerX" secondItem="fVj-r0-gxf" secondAttribute="centerX" id="sOv-Pt-raz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="exportBtn" destination="YLn-vv-Jk5" id="VXR-ES-xlb"/>
+                        <outlet property="kickButton" destination="fVj-r0-gxf" id="oz6-zY-pkQ"/>
+                        <outlet property="recordPlayToggleButton" destination="kyH-RI-SuY" id="3so-wk-5Ww"/>
+                        <outlet property="snareButton" destination="15l-py-KvB" id="mqQ-50-3gw"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rD4-aA-fb7" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="130.88455772113943"/>
         </scene>
     </scenes>
 </document>
