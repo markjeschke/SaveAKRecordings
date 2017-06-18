@@ -10,12 +10,6 @@ import AudioKit
 
 class Conductor {
     
-    enum CurrentInstrument: String {
-        case none
-        case kick
-        case snare
-    }
-    
     enum State {
         case readyToRecord
         case recording
@@ -32,7 +26,7 @@ class Conductor {
     let snareSampler: Instrument
     
     var mixer = AKMixer()
-    var mainMixer = AKMixer()
+    var outputMixer = AKMixer()
     
     var delay: AKDelay!
     var delayMixer: AKDryWetMixer!
@@ -42,14 +36,12 @@ class Conductor {
     var distortionMixer: AKDryWetMixer!
     
     var booster: AKBooster!
-
-    var currentInstrument: CurrentInstrument = .none
     
     var state: State = .readyToRecord
     var recorder: AKNodeRecorder!
     var player: AKAudioPlayer!
     let exportedAudioFileName = "SavedAudioKitFile"
-    var exportedAudioFilePath = String(describing: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+    var exportedAudioFilePath: String?
     let exportedAudioFile: String = "SavedAudioKitFile.m4a"
     let timecodeFormatter = TimecodeFormatter()
     var audioFileDuration = "00:00:00"
@@ -95,10 +87,11 @@ class Conductor {
             AKLog("Could not set session category.")
         }
         
+        // Connect the mixer output to the booster node.
         booster = AKBooster(mixer)
         booster.gain = 1.0
         
-        // Connect the mixer output to the delay node.
+        // Connect the booster output to the delay node.
         delay = AKDelay(booster)
         delay.time = 1.0 // seconds
         delay.feedback  = 0.1 // Normalized Value 0 - 1
@@ -134,14 +127,16 @@ class Conductor {
         player.looping = true
         player.completionHandler = playingEnded
         
-        mainMixer = AKMixer(distortionMixer, player)
+        // Mix the distortionMixer and player node into an outputMixer.
+        outputMixer = AKMixer(distortionMixer, player)
         
-        // Connect the end of the audio chain to the global output.
-        AudioKit.output = mainMixer
+        // Connect the end of the audio chain to the AudioKit engine output.
+        AudioKit.output = outputMixer
         
         // Allow audio to play while the iOS device is muted.
         AKSettings.playbackWhileMuted = true
         
+        /// Whether to DefaultToSpeaker when audio input is enabled
         AKSettings.defaultToSpeaker = true
         
         // Start the audio engine
@@ -151,14 +146,14 @@ class Conductor {
         print("state: \(state)")
     }
     
-    func playingEnded() {
+    internal func playingEnded() {
         DispatchQueue.main.async {
             print("Finished playing the audio file.")
             self.setupUIForPlaying ()
         }
     }
     
-    func recordPlayToggle() {
+    internal func recordPlayToggle() {
         print("state: \(state)")
         switch state {
         case .readyToRecord :
@@ -197,7 +192,7 @@ class Conductor {
         
     }
     
-    func setupUIForPlaying () {
+    internal func setupUIForPlaying () {
         let recordedDuration = player != nil ? player.audioFile.duration: 0
         print("Recorded: \(String(format: "%0.1f", recordedDuration)) seconds")
         audioFileDuration = timecodeFormatter.convertSecondsToTimecode(totalSeconds: Int(recordedDuration))
@@ -205,28 +200,27 @@ class Conductor {
         state = .readyToPlay
     }
     
-    func getDocumentsDirectory() -> String {
-        
+    internal func getDocumentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true) as [String]
-        
         return paths[0]
     }
     
-    func showFiles() {
-        print("getDocumentsDirectory: \(getDocumentsDirectory())")
+    internal func showFiles() {
         print("show files")
+        print("getDocumentsDirectory: \(getDocumentsDirectory())")
 
-        if let exportedAudio = String(getDocumentsDirectory()) {
-            self.exportedAudioFilePath = exportedAudio
+        if let exportedAudioPath = String(getDocumentsDirectory()) {
+            self.exportedAudioFilePath = exportedAudioPath
+            print("self.exportedAudioFilePath: \(String(describing: self.exportedAudioFilePath))")
         }
 
-        var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        path?.appendPathComponent(exportedAudioFile)
+        if var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            path.appendPathComponent(exportedAudioFile)
+            print("path: \(String(describing: path))")
+            exportedAudio = path
+        }
         
-        print("path: \(String(describing: path))")
-        
-        exportedAudio = path
-        
+        // Print out all of the found files in the Documents directory.
         do {
             let items = try FileManager.default.contentsOfDirectory(atPath: getDocumentsDirectory())
             
@@ -236,6 +230,7 @@ class Conductor {
         } catch {
             print("Can't find any items")
         }
+
     }
     
     internal func playKick() {

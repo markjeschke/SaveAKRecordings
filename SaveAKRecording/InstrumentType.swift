@@ -19,19 +19,4 @@ enum InstrumentType: String {
       hiTom = "Hi-Tom",
       lowTom = "Low-Tom",
       floorTom = "Floor-Tom"
-  
-  func audioFilePath() -> String {
-    switch(self) {
-    case .kickLeft:
-      audioPath = "kickLeft.wav"
-    case .kickRight:
-      audioPath = "kickRight.wave"
-    case .snare:
-      audioPath = "snare.wave"
-    default:
-      print("I have an unexpected case.")
-    }
-    return audioPath!
-  }
-  
 }

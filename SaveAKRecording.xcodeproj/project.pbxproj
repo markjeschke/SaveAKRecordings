@@ -12,7 +12,6 @@
 		F71D192C1EF351A300523ACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192A1EF351A300523ACB /* Main.storyboard */; };
 		F71D192E1EF351A300523ACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F71D192D1EF351A300523ACB /* Assets.xcassets */; };
 		F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */; };
-		F71D19551EF3530100523ACB /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19541EF3530100523ACB /* Conductor.swift */; };
 		F71D195C1EF3532A00523ACB /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; };
 		F71D195D1EF3532A00523ACB /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F71D19601EF3532A00523ACB /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19581EF3532A00523ACB /* RxCocoa.framework */; };
@@ -27,6 +26,7 @@
 		F71D19761EF5A34800523ACB /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19751EF5A34800523ACB /* EmailComposer.swift */; };
 		F71D19811EF62A7E00523ACB /* TimecodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19801EF62A7E00523ACB /* TimecodeFormatter.swift */; };
 		F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = F71D19871EF6394800523ACB /* AudioShareSDK.m */; };
+		F7BEB0B61EF6CC2800A744B6 /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BEB0B51EF6CC2800A744B6 /* Conductor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +54,6 @@
 		F71D192D1EF351A300523ACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F71D19301EF351A300523ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F71D19321EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F71D19541EF3530100523ACB /* Conductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conductor.swift; sourceTree = "<group>"; };
 		F71D19561EF3532A00523ACB /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = ../Carthage/Build/iOS/AudioKit.framework; sourceTree = "<group>"; };
 		F71D19571EF3532A00523ACB /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = ../Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		F71D19581EF3532A00523ACB /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		F71D19851EF6394800523ACB /* SaveAKRecording-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SaveAKRecording-Bridging-Header.h"; sourceTree = "<group>"; };
 		F71D19861EF6394800523ACB /* AudioShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioShareSDK.h; sourceTree = "<group>"; };
 		F71D19871EF6394800523ACB /* AudioShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioShareSDK.m; sourceTree = "<group>"; };
+		F7BEB0B51EF6CC2800A744B6 /* Conductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conductor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 		F71D19831EF6370800523ACB /* AudioEngine */ = {
 			isa = PBXGroup;
 			children = (
-				F71D19541EF3530100523ACB /* Conductor.swift */,
+				F7BEB0B51EF6CC2800A744B6 /* Conductor.swift */,
 			);
 			name = AudioEngine;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 				F71D19291EF351A300523ACB /* ViewController.swift in Sources */,
 				F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */,
 				F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */,
-				F71D19551EF3530100523ACB /* Conductor.swift in Sources */,
+				F7BEB0B61EF6CC2800A744B6 /* Conductor.swift in Sources */,
 				F71D19701EF3536F00523ACB /* Instrument.swift in Sources */,
 				F71D19761EF5A34800523ACB /* EmailComposer.swift in Sources */,
 				F71D19271EF351A300523ACB /* AppDelegate.swift in Sources */,

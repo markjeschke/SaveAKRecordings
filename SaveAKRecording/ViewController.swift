@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     var conductor = Conductor.sharedInstance
     let emailComposer = EmailComposer()
-    
+
     var mainCGColor: CGColor = UIColor(red:10/255, green:96/255, blue:255/255, alpha:1.0).cgColor
     var mainColor: UIColor = UIColor(red:10/255, green:96/255, blue:255/255, alpha:1.0)
     
@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     }
     
     //MARK: IBActions
-    
     @IBAction func recordPlayToggleAction(_ sender: UIButton) {
         conductor.recordPlayToggle()
         switch(conductor.state) {
@@ -51,9 +50,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
-        //conductor.exportToAudioShare()
-        
+
         let alertController = UIAlertController(title: "Export Audio", message: "\(self.conductor.exportedAudioFileName)", preferredStyle: .alert)
+        
         // AudioShare
         let audioShareAction = UIAlertAction(title: "AudioShare", style: .default) { (action) in
             self.conductor.exportToAudioShare()
@@ -66,24 +65,16 @@ class ViewController: UIViewController {
         let shareAction = UIAlertAction(title: "More options", style: .default) { (action) in
             self.exportTap()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
-        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         
         alertController.addAction(audioShareAction)
         alertController.addAction(emailAction)
         alertController.addAction(shareAction)
         alertController.addAction(cancelAction)
         
-        self.present(alertController, animated: true) {
-        }
+        self.present(alertController, animated: true)
 
-        
-//        let configuredMailComposeViewController = emailComposer.configuredMailComposeViewController()
-//        if emailComposer.canSendMail() {
-//            present(configuredMailComposeViewController, animated: true, completion: nil)
-//        } else {
-//            showSendMailErrorAlert()
-//        }
     }
     
     func exportToEmail() {
@@ -121,7 +112,6 @@ class ViewController: UIViewController {
             controller.completionWithItemsHandler = { activity, success, items, error in
                 self.dismiss(animated: true, completion: nil)
             }
-            
             if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
                 controller.popoverPresentationController?.sourceView = self.exportBtn
                 controller.modalPresentationStyle = UIModalPresentationStyle.popover

@@ -34,7 +34,7 @@ class EmailComposer: NSObject, MFMailComposeViewControllerDelegate {
         mail.setToRecipients([emailRecipients])
         mail.setMessageBody(emailMessageBody, isHTML: true)
         
-        let filePath = "\(conductor.exportedAudioFilePath)/\(conductor.exportedAudioFile)"
+        let filePath = "\(String(describing: conductor.exportedAudioFilePath))/\(conductor.exportedAudioFile)"
         print("filePath: \(filePath)")
         print("filePath: \(self.conductor.exportedAudioFile)")
         if let emailAudio = conductor.exportedAudio {
