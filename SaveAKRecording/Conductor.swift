@@ -28,14 +28,14 @@ class Conductor {
     var mixer = AKMixer()
     var outputMixer = AKMixer()
     
+    var booster: AKBooster!
     var delay: AKDelay!
     var delayMixer: AKDryWetMixer!
     var reverb: AKReverb!
     var reverbMixer: AKDryWetMixer!
     var distortion: AKDistortion!
     var distortionMixer: AKDryWetMixer!
-    
-    var booster: AKBooster!
+    var eq: AKEqualizerFilter!
     
     var state: State = .readyToRecord
     var recorder: AKNodeRecorder!
@@ -98,9 +98,9 @@ class Conductor {
         delay.dryWetMix = 0.3  // Normalized Value 0 - 1
         delay.lowPassCutoff = 15000
         
-        // Connect the mixer output and the delay effect to its own delayMixer.
+        // Connect the booster output and the delay effect to its own delayMixer.
         // mixer output 0 << 0.5 >> 1.0 delay effect
-        delayMixer = AKDryWetMixer(mixer, delay)
+        delayMixer = AKDryWetMixer(booster, delay)
         delayMixer.balance = 0.5
         
         // Connect the delayMixer output to the reverb node.
@@ -116,17 +116,22 @@ class Conductor {
         // Connect reverbMixer to the distortion node.
         distortion = AKDistortion(reverbMixer)
         distortion.squaredTerm = 0.7
-        distortion.decay = 4.0
-        distortion.softClipGain = 2.0
-        distortion.polynomialMix = 0.0
-        distortion.finalMix = 0.8
-        distortion.decimation = 0.1
-        distortion.decimationMix = 0.3
+        distortion.decay = 7.0
+        distortion.softClipGain = 6.0
+        distortion.polynomialMix = 0.1
+        distortion.finalMix = 0.2
+        distortion.decimation = 0.3
+        distortion.decimationMix = 0.8
         distortionMixer = AKDryWetMixer(reverbMixer, distortion)
-        distortionMixer.balance = 0.5
+        distortionMixer.balance = 0.3
         
-        // Connect the recorder to the output of the distortionMixer.
-        recorder = try? AKNodeRecorder(node: distortionMixer)
+        // Connect the eq to the output of the distortionMixer.
+        eq = AKEqualizerFilter(distortionMixer)
+        eq.bandwidth = 0.5
+        eq.centerFrequency = 1.0
+        
+        // Connect the recorder to the output of the eq.
+        recorder = try? AKNodeRecorder(node: eq)
         if let file = recorder.audioFile {
             player = try? AKAudioPlayer(file: file)
         }
@@ -148,8 +153,6 @@ class Conductor {
         // Start the audio engine
         AudioKit.start()
         print("Audio engine started")
-        
-        print("state: \(state)")
     }
     
     internal func playingEnded() {
@@ -248,7 +251,6 @@ class Conductor {
     }
     
     //Mark - Export to AudioShare
-    
     internal func exportToAudioShare () {
         audioShareSDK.addSound(from: exportedAudio, withName: exportedAudioFileName)
     }
