@@ -27,6 +27,7 @@
 		F71D19811EF62A7E00523ACB /* TimecodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19801EF62A7E00523ACB /* TimecodeFormatter.swift */; };
 		F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = F71D19871EF6394800523ACB /* AudioShareSDK.m */; };
 		F7BEB0B61EF6CC2800A744B6 /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BEB0B51EF6CC2800A744B6 /* Conductor.swift */; };
+		F7BEB0BB1EF7464100A744B6 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BEB0BA1EF7464100A744B6 /* UIColor+Palette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		F71D19861EF6394800523ACB /* AudioShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioShareSDK.h; sourceTree = "<group>"; };
 		F71D19871EF6394800523ACB /* AudioShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioShareSDK.m; sourceTree = "<group>"; };
 		F7BEB0B51EF6CC2800A744B6 /* Conductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conductor.swift; sourceTree = "<group>"; };
+		F7BEB0BA1EF7464100A744B6 /* UIColor+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		F71D19251EF351A300523ACB /* SaveAKRecording */ = {
 			isa = PBXGroup;
 			children = (
+				F7BEB0B91EF7461E00A744B6 /* Extensions */,
 				F71D19261EF351A300523ACB /* AppDelegate.swift */,
 				F71D19281EF351A300523ACB /* ViewController.swift */,
 				F71D19841EF6371400523ACB /* Classes */,
@@ -168,6 +171,14 @@
 				F71D19751EF5A34800523ACB /* EmailComposer.swift */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		F7BEB0B91EF7461E00A744B6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F7BEB0BA1EF7464100A744B6 /* UIColor+Palette.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71D19291EF351A300523ACB /* ViewController.swift in Sources */,
+				F7BEB0BB1EF7464100A744B6 /* UIColor+Palette.swift in Sources */,
 				F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */,
 				F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */,
 				F7BEB0B61EF6CC2800A744B6 /* Conductor.swift in Sources */,

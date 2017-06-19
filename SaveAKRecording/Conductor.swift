@@ -17,6 +17,28 @@ class Conductor {
         case playing
     }
     
+    enum Format: String {
+        case m4a = ".m4a"
+        case wav = ".wav"
+        case mp4 = ".mp4"
+        case aif = ".aif"
+        case caf = ".caf"
+        func selectExtension() -> AKAudioFile.ExportFormat {
+            switch self {
+            case .m4a:
+                return .m4a
+            case .wav:
+                return .wav
+            case .mp4:
+                return .mp4
+            case .aif:
+                return .aif
+            case .caf:
+                return .caf
+            }
+        }
+    }
+    
     static let sharedInstance = Conductor()
     
     let audioShareSDK = AudioShare()
@@ -35,17 +57,17 @@ class Conductor {
     var reverbMixer: AKDryWetMixer!
     var distortion: AKDistortion!
     var distortionMixer: AKDryWetMixer!
-    var eq: AKEqualizerFilter!
     
     var state: State = .readyToRecord
     var recorder: AKNodeRecorder!
     var player: AKAudioPlayer!
-    let exportedAudioFileName = "SavedAudioKitFile"
-    var exportedAudioFilePath: String?
-    let exportedAudioFile: String = "SavedAudioKitFile.m4a"
+    var exportedAudioFileName = "SavedAudioKitFile"
+    var exportedAudioFilePath: String = ""
+    var exportedAudioFile: String = ""
     let timecodeFormatter = TimecodeFormatter()
     var audioFileDuration = "00:00:00"
     var exportedAudio: URL?
+    var audioFormat:Format = .caf
     
     init() {
         
@@ -125,13 +147,8 @@ class Conductor {
         distortionMixer = AKDryWetMixer(reverbMixer, distortion)
         distortionMixer.balance = 0.3
         
-        // Connect the eq to the output of the distortionMixer.
-        eq = AKEqualizerFilter(distortionMixer)
-        eq.bandwidth = 0.5
-        eq.centerFrequency = 1.0
-        
         // Connect the recorder to the output of the eq.
-        recorder = try? AKNodeRecorder(node: eq)
+        recorder = try? AKNodeRecorder(node: distortionMixer)
         if let file = recorder.audioFile {
             player = try? AKAudioPlayer(file: file)
         }
@@ -182,7 +199,7 @@ class Conductor {
                 recorder.stop()
                 player.audioFile.exportAsynchronously(name: exportedAudioFileName,
                                                       baseDir: .documents,
-                                                      exportFormat: .m4a) {_, exportError in
+                                                      exportFormat: audioFormat.selectExtension()) {_, exportError in
                                                         if let error = exportError {
                                                             print("Export Failed \(error)")
                                                         } else {
@@ -223,11 +240,14 @@ class Conductor {
             print("self.exportedAudioFilePath: \(String(describing: self.exportedAudioFilePath))")
         }
 
+        self.exportedAudioFile = "\(self.exportedAudioFileName)\(self.audioFormat.rawValue)"
+        
         if var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            path.appendPathComponent(exportedAudioFile)
+            path.appendPathComponent(self.exportedAudioFile)
             print("path: \(String(describing: path))")
             exportedAudio = path
         }
+        
         
         // Print out all of the found files in the Documents directory.
         do {

@@ -24,6 +24,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.recordPlayToggleButton.setTitle("◉ Record", for: .normal)
+        self.recordPlayToggleButton.setTitleColor(.recordColor, for: .normal)
+        self.recordPlayToggleButton.layer.cornerRadius = 5.0
+        self.recordPlayToggleButton.layer.borderWidth = 1.0
+        self.recordPlayToggleButton.layer.borderColor = UIColor.recordColor.cgColor
     }
     
     //MARK: IBActions
@@ -31,11 +37,22 @@ class ViewController: UIViewController {
         conductor.recordPlayToggle()
         switch(conductor.state) {
         case .readyToRecord:
-            recordPlayToggleButton.setTitle("Record", for: .normal)
-        case .recording, .playing:
-            recordPlayToggleButton.setTitle("Stop", for: .normal)
+            recordPlayToggleButton.setTitle("◉ Record", for: .normal)
+            recordPlayToggleButton.setTitleColor(.recordColor, for: .normal)
+            recordPlayToggleButton.layer.borderColor = UIColor.recordColor.cgColor
+        case .recording:
+            recordPlayToggleButton.setTitle("◼︎ Stop", for: .normal)
+            self.recordPlayToggleButton.setTitleColor(.white, for: .normal)
+            self.recordPlayToggleButton.layer.backgroundColor = UIColor.recordColor.cgColor
+        case .playing:
+            recordPlayToggleButton.setTitle("◼︎ Stop", for: .normal)
+            self.recordPlayToggleButton.setTitleColor(.white, for: .normal)
+            self.recordPlayToggleButton.layer.backgroundColor = UIColor.playColor.cgColor
         case .readyToPlay:
-            recordPlayToggleButton.setTitle("Play", for: .normal)
+            recordPlayToggleButton.setTitle("▶︎ Play", for: .normal)
+            self.recordPlayToggleButton.setTitleColor(.playColor, for: .normal)
+            self.recordPlayToggleButton.layer.backgroundColor = UIColor.white.cgColor
+            recordPlayToggleButton.layer.borderColor = UIColor.playColor.cgColor
         }
     }
     

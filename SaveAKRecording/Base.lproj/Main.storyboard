@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,16 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
-                                <rect key="frame" x="133" y="106" width="109" height="28"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
-                                <state key="normal" title="Record"/>
-                                <connections>
-                                    <action selector="recordPlayToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="36l-Yh-bU0"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
-                                <rect key="frame" x="142" y="159" width="90" height="38"/>
+                                <rect key="frame" x="143" y="157" width="90" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Kick"/>
                                 <connections>
@@ -39,7 +30,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
-                                <rect key="frame" x="137" y="217" width="100" height="38"/>
+                                <rect key="frame" x="138" y="215" width="100" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Snare"/>
                                 <connections>
@@ -47,25 +38,35 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
-                                <rect key="frame" x="57" y="277" width="260" height="38"/>
+                                <rect key="frame" x="113" y="275" width="149" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Email Audio"/>
+                                <state key="normal" title="Export Audio"/>
                                 <connections>
                                     <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
+                                <rect key="frame" x="123" y="104" width="129" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="lxH-Kb-Yii"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
+                                <state key="normal" title="◉ Record"/>
+                                <connections>
+                                    <action selector="recordPlayToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="36l-Yh-bU0"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="15l-py-KvB" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" id="C1e-0m-wGu"/>
-                            <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="DUq-rk-5bs"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="15l-py-KvB" secondAttribute="bottom" constant="22" id="GOp-om-i4X"/>
-                            <constraint firstItem="fVj-r0-gxf" firstAttribute="top" secondItem="kyH-RI-SuY" secondAttribute="bottom" constant="25" id="QBu-4I-EUw"/>
-                            <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="15l-py-KvB" secondAttribute="centerX" id="WB1-dr-5zd"/>
-                            <constraint firstItem="kyH-RI-SuY" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="86" id="cZy-Wh-FPR"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leadingMargin" constant="41" id="gSm-AI-qDh"/>
-                            <constraint firstItem="15l-py-KvB" firstAttribute="top" secondItem="fVj-r0-gxf" secondAttribute="bottom" constant="20" id="lHT-f2-8DB"/>
-                            <constraint firstItem="kyH-RI-SuY" firstAttribute="centerX" secondItem="fVj-r0-gxf" secondAttribute="centerX" id="sOv-Pt-raz"/>
+                            <constraint firstItem="kyH-RI-SuY" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="0gg-L6-FBM"/>
+                            <constraint firstItem="fVj-r0-gxf" firstAttribute="top" secondItem="kyH-RI-SuY" secondAttribute="bottom" constant="25" id="3UB-sE-FHE"/>
+                            <constraint firstItem="15l-py-KvB" firstAttribute="top" secondItem="fVj-r0-gxf" secondAttribute="bottom" constant="20" id="EOf-ax-BzN"/>
+                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="15l-py-KvB" secondAttribute="bottom" constant="22" id="GX2-ms-UJ0"/>
+                            <constraint firstItem="kyH-RI-SuY" firstAttribute="centerX" secondItem="fVj-r0-gxf" secondAttribute="centerX" id="RTg-0w-pfd"/>
+                            <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="15l-py-KvB" secondAttribute="centerX" id="lZl-dP-YqU"/>
+                            <constraint firstItem="kyH-RI-SuY" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="84" id="uA7-HW-7Vd"/>
+                            <constraint firstItem="15l-py-KvB" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" id="uln-3z-PPe"/>
                         </constraints>
                     </view>
                     <connections>
