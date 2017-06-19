@@ -67,7 +67,7 @@ class Conductor {
     let timecodeFormatter = TimecodeFormatter()
     var audioFileDuration = "00:00:00"
     var exportedAudio: URL?
-    var audioFormat:Format = .m4a
+    var audioFormat:Format = .m4a // Set the audio format. This should be set by the user via UISegmentedController.
     
     init() {
         
@@ -232,6 +232,7 @@ class Conductor {
     }
     
     internal func showFiles() {
+
         print("show files")
         print("getDocumentsDirectory: \(getDocumentsDirectory())")
 
@@ -247,7 +248,6 @@ class Conductor {
             print("path: \(String(describing: path))")
             exportedAudio = path
         }
-        
         
         // Print out all of the found files in the Documents directory.
         do {

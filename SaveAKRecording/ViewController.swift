@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         self.recordPlayToggleButton.layer.cornerRadius = 5.0
         self.recordPlayToggleButton.layer.borderWidth = 0.5
         self.recordPlayToggleButton.layer.borderColor = UIColor.recordColor.cgColor
+        
     }
     
     //MARK: IBActions
@@ -124,7 +125,7 @@ class ViewController: UIViewController {
         if let audioURL: URL = conductor.exportedAudio {
             let shareText = "Listen to \(conductor.exportedAudioFileName)"
             let controller = UIActivityViewController(activityItems: [shareText, audioURL], applicationActivities: nil)
-            // Set the audio file's subject when sharing via email.
+            // Set the email's subject name to the exported audio file name.
             controller.setValue(self.conductor.exportedAudioFileName, forKey: "subject")
             controller.completionWithItemsHandler = { activity, success, items, error in
                 self.dismiss(animated: true, completion: nil)
