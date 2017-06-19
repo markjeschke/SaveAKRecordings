@@ -67,7 +67,7 @@ class Conductor {
     let timecodeFormatter = TimecodeFormatter()
     var audioFileDuration = "00:00:00"
     var exportedAudio: URL?
-    var audioFormat:Format = .caf
+    var audioFormat:Format = .m4a
     
     init() {
         
