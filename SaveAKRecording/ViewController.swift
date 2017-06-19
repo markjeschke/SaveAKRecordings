@@ -13,9 +13,6 @@ class ViewController: UIViewController {
 
     var conductor = Conductor.sharedInstance
     let emailComposer = EmailComposer()
-
-    var mainCGColor: CGColor = UIColor(red:10/255, green:96/255, blue:255/255, alpha:1.0).cgColor
-    var mainColor: UIColor = UIColor(red:10/255, green:96/255, blue:255/255, alpha:1.0)
     
     @IBOutlet weak var kickButton: UIButton!
     @IBOutlet weak var snareButton: UIButton!
