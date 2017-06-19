@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         self.recordPlayToggleButton.setTitle("◉ Record", for: .normal)
         self.recordPlayToggleButton.setTitleColor(.recordColor, for: .normal)
         self.recordPlayToggleButton.layer.cornerRadius = 5.0
-        self.recordPlayToggleButton.layer.borderWidth = 1.0
+        self.recordPlayToggleButton.layer.borderWidth = 0.5
         self.recordPlayToggleButton.layer.borderColor = UIColor.recordColor.cgColor
     }
     
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         case .readyToPlay:
             recordPlayToggleButton.setTitle("▶︎ Play", for: .normal)
             self.recordPlayToggleButton.setTitleColor(.playColor, for: .normal)
-            self.recordPlayToggleButton.layer.backgroundColor = UIColor.white.cgColor
+            self.recordPlayToggleButton.layer.backgroundColor = UIColor.clear.cgColor
             recordPlayToggleButton.layer.borderColor = UIColor.playColor.cgColor
         }
     }
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
 
-        let alertController = UIAlertController(title: "Export Audio", message: "\(self.conductor.exportedAudioFileName)", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Export Audio Recording", message: "\"\(self.conductor.exportedAudioFile)\"", preferredStyle: .alert)
         
         // AudioShare
         let audioShareAction = UIAlertAction(title: "AudioShare", style: .default) { (action) in
