@@ -24,7 +24,7 @@ class EmailComposer: NSObject, MFMailComposeViewControllerDelegate {
         
         let emailSubject = "\(self.conductor.exportedAudioFileName)"
         //let emailRecipients = "your-email@some-address.com"
-        let emailMessageBody = "<p>Check out my recording made with <a href=\'http://audiokit.io/'>AudioKit!</a><br /><br />\(String(describing: self.conductor.audioFileDuration))"
+        let emailMessageBody = "<p>Check out my recording made with <a href=\'http://audiokit.io/'>AudioKit!</a></p><p>Duration: \(String(describing: self.conductor.audioFileDuration))</p><p>You can check out the source for this AudioKit project at: <a href=\'https://github.com/markjeschke/SaveAKRecordings'>https://github.com/markjeschke/SaveAKRecordings</a>"
         
         mail.setSubject(emailSubject)
         //mail.setToRecipients([emailRecipients])

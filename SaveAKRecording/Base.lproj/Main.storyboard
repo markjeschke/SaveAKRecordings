@@ -38,18 +38,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
-                                <rect key="frame" x="113" y="275" width="149" height="38"/>
+                                <rect key="frame" x="77" y="275" width="222" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Export Audio"/>
+                                <state key="normal" title="Export Audio Recording"/>
                                 <connections>
                                     <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
-                                <rect key="frame" x="123" y="104" width="129" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="129" id="lxH-Kb-Yii"/>
-                                </constraints>
+                                <rect key="frame" x="124" y="104" width="127" height="28"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
                                 <state key="normal" title="◉ Record"/>
                                 <connections>
