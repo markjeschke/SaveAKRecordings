@@ -19,7 +19,7 @@ struct GlobalEffectParams {
 }
 
 class Instrument: AKMIDISampler {
-  var type: InstrumentType = .kickLeft
+  var type: InstrumentType = .kickOne
   var pitch: MIDINoteNumber
   var samplePath: String
   var midiNote: MIDINoteNumber

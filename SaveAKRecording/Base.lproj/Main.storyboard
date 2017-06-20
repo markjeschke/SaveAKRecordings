@@ -45,12 +45,12 @@
                                     <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
+                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
                                 <rect key="frame" x="124" y="104" width="127" height="28"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
                                 <state key="normal" title="◉ Record"/>
                                 <connections>
-                                    <action selector="recordPlayToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="36l-Yh-bU0"/>
+                                    <action selector="recordPlayToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="JWA-6z-Twc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -67,9 +67,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="exportBtn" destination="YLn-vv-Jk5" id="VXR-ES-xlb"/>
                         <outlet property="kickButton" destination="fVj-r0-gxf" id="oz6-zY-pkQ"/>
-                        <outlet property="recordPlayToggleButton" destination="kyH-RI-SuY" id="3so-wk-5Ww"/>
+                        <outlet property="recordPlayToggleButton" destination="kyH-RI-SuY" id="7rL-Sk-Oou"/>
                         <outlet property="snareButton" destination="15l-py-KvB" id="mqQ-50-3gw"/>
                     </connections>
                 </viewController>

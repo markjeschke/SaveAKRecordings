@@ -47,8 +47,16 @@ class Conductor {
     let kickSampler: Instrument
     let snareSampler: Instrument
     
-    var mixer = AKMixer()
+    var instrumentMixer = AKMixer()
     var outputMixer = AKMixer()
+    
+    var kickOneDelay: AKDelay!
+    var kickOneReverb: AKReverb!
+    var kickOneDistortion: AKDistortion!
+    
+    var snareDelay: AKDelay!
+    var snareReverb: AKReverb!
+    var snareDistortion: AKDistortion!
     
     var booster: AKBooster!
     var delay: AKDelay!
@@ -71,8 +79,20 @@ class Conductor {
     
     init() {
         
+        // Clean tempFiles !
+        AKAudioFile.cleanTempDirectory()
+        
+        // Session settings
+        AKSettings.bufferLength = .medium
+        
+        do {
+            try AKSettings.setSession(category: .playAndRecord, with: .allowBluetoothA2DP)
+        } catch {
+            AKLog("Could not set session category.")
+        }
+        
         self.kickSampler = Instrument(
-            type: .kickLeft,
+            type: .kickOne,
             pitch: 60,
             samplePath: "Sounds/min_kick_02_C",
             midiNote: 36,
@@ -94,30 +114,56 @@ class Conductor {
             print("Could not locate the wav files.")
         }
         
+        // kick node
+        kickOneDelay = AKDelay(kickSampler)
+        kickOneDelay.time = 0.03 // seconds
+        kickOneDelay.feedback  = 0.02 // Normalized Value 0 - 1
+        kickOneDelay.dryWetMix = 0.3  // Normalized Value 0 - 1
+        kickOneDelay.lowPassCutoff = 15000
+        
+        kickOneDistortion = AKDistortion(kickOneDelay)
+        kickOneDistortion.squaredTerm = 0.8
+        kickOneDistortion.cubicTerm = 1.0
+        kickOneDistortion.decay = 7.0
+        kickOneDistortion.delay = 0.1
+        kickOneDistortion.delayMix = 0.1
+        kickOneDistortion.rounding = 0.1
+        kickOneDistortion.softClipGain = 6.0
+        kickOneDistortion.polynomialMix = 0.0
+        kickOneDistortion.finalMix = 0.7
+        kickOneDistortion.decimation = 0.1
+        kickOneDistortion.decimationMix = 0.8
+        
+        kickOneReverb = AKReverb(kickOneDistortion)
+        kickOneReverb.dryWetMix = 0.5
+        kickOneReverb.loadFactoryPreset(.smallRoom)
+        
+        // snare node
+        snareDelay = AKDelay(snareSampler)
+        snareDelay.time = 0.2 // seconds
+        snareDelay.feedback  = 0.2 // Normalized Value 0 - 1
+        snareDelay.dryWetMix = 0.01  // Normalized Value 0 - 1
+        snareDelay.lowPassCutoff = 15000
+        
+        snareDistortion = AKDistortion(snareDelay)
+        snareDistortion.finalMix = 0.0
+        
+        snareReverb = AKReverb(snareDistortion)
+        snareReverb.dryWetMix = 0.1
+        snareReverb.loadFactoryPreset(.largeHall)
+        
         // Combine the kick and snare drum samples output into a mixer.
-        mixer = AKMixer(kickSampler, snareSampler)
-        
-        // Clean tempFiles !
-        AKAudioFile.cleanTempDirectory()
-        
-        // Session settings
-        AKSettings.bufferLength = .medium
-        
-        do {
-            try AKSettings.setSession(category: .playAndRecord, with: .allowBluetoothA2DP)
-        } catch {
-            AKLog("Could not set session category.")
-        }
+        instrumentMixer = AKMixer(kickOneReverb, snareReverb)
         
         // Connect the mixer output to the booster node.
-        booster = AKBooster(mixer)
+        booster = AKBooster(instrumentMixer)
         booster.gain = 1.0
         
         // Connect the booster output to the delay node.
         delay = AKDelay(booster)
         delay.time = 0.12 // seconds
-        delay.feedback  = 0.1 // Normalized Value 0 - 1
-        delay.dryWetMix = 0.3  // Normalized Value 0 - 1
+        delay.feedback  = 0.07 // Normalized Value 0 - 1
+        delay.dryWetMix = 0.0  // Normalized Value 0 - 1
         delay.lowPassCutoff = 15000
         
         // Connect the booster output and the delay effect to its own delayMixer.
@@ -127,7 +173,7 @@ class Conductor {
         
         // Connect the delayMixer output to the reverb node.
         reverb = AKReverb(delayMixer)
-        reverb.dryWetMix = 0.1
+        reverb.dryWetMix = 0.0
         reverb.loadFactoryPreset(.mediumChamber)
         
         // Connect the mixer output and the reverb effect to its own reverbMixer.
@@ -137,15 +183,19 @@ class Conductor {
         
         // Connect reverbMixer to the distortion node.
         distortion = AKDistortion(reverbMixer)
-        distortion.squaredTerm = 0.7
+        distortion.squaredTerm = 0.0
+        distortion.cubicTerm = 1.0
         distortion.decay = 7.0
-        distortion.softClipGain = 6.0
-        distortion.polynomialMix = 0.1
-        distortion.finalMix = 0.2
-        distortion.decimation = 0.3
+        distortion.delay = 0.3
+        distortion.delayMix = 0.1
+        distortion.rounding = 0.1
+        distortion.softClipGain = 5.0
+        distortion.polynomialMix = 0.0
+        distortion.finalMix = 0.0
+        distortion.decimation = 0.1
         distortion.decimationMix = 0.8
         distortionMixer = AKDryWetMixer(reverbMixer, distortion)
-        distortionMixer.balance = 0.3
+        distortionMixer.balance = 0.5
         
         // Connect the recorder to the output of the eq.
         recorder = try? AKNodeRecorder(node: distortionMixer)

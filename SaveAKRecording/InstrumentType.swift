@@ -12,8 +12,8 @@ var audioPath: String?
 
 enum InstrumentType: String {
   case
-      kickLeft = "Kick Left",
-      kickRight = "Kick Right",
+      kickOne = "Kick One",
+      kickTwo = "Kick Two",
       snare = "Snare",
       cowbell = "Cowbell",
       hiTom = "Hi-Tom",

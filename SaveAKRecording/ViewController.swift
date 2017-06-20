@@ -56,12 +56,12 @@ class ViewController: UIViewController {
     
     @IBAction func triggerKick() {
         conductor.playKick()
-        self.change(color: .darkGray)
+        //self.change(color: .darkGray)
     }
     
     @IBAction func triggerSnare() {
         conductor.playSnare()
-        self.change(color: .darkGray)
+        //self.change(color: .darkGray)
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
@@ -136,14 +136,6 @@ class ViewController: UIViewController {
             }
         }
         
-    }
-    
-    //MARK: Animate background view color
-    func change(color : UIColor) {
-        self.view.backgroundColor = color
-        UIView.animate(withDuration: 0.5) {
-            self.view.backgroundColor = .white
-        }
     }
     
 }
