@@ -118,27 +118,27 @@ class Conductor {
         kickOneDelay = AKDelay(kickSampler)
         kickOneDelay.time = 0.03 // seconds
         kickOneDelay.feedback  = 0.02 // Normalized Value 0 - 1
-        kickOneDelay.dryWetMix = 0.3  // Normalized Value 0 - 1
+        kickOneDelay.dryWetMix = 0.0  // Normalized Value 0 - 1
         kickOneDelay.lowPassCutoff = 15000
         
         // kick distortion
         kickOneDistortion = AKDistortion(kickOneDelay)
-        kickOneDistortion.squaredTerm = 0.0
+        kickOneDistortion.squaredTerm = 0.4
         kickOneDistortion.cubicTerm = 1.0
         kickOneDistortion.decay = 7.0
         kickOneDistortion.delay = 0.3
         kickOneDistortion.delayMix = 0.1
-        kickOneDistortion.rounding = 0.1
+        kickOneDistortion.rounding = 0.0
         kickOneDistortion.softClipGain = 7.0
         kickOneDistortion.polynomialMix = 0.0
-        kickOneDistortion.finalMix = 0.7
-        kickOneDistortion.decimation = 0.1
+        kickOneDistortion.finalMix = 0.3
+        kickOneDistortion.decimation = 0.6
         kickOneDistortion.decimationMix = 1.0
         
         // kick reverb
         kickOneReverb = AKReverb(kickOneDistortion)
         kickOneReverb.dryWetMix = 0.15
-        kickOneReverb.loadFactoryPreset(.mediumChamber)
+        kickOneReverb.loadFactoryPreset(.mediumRoom)
         
         // snare sampler node into a delay
         snareDelay = AKDelay(snareSampler)
