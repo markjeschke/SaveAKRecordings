@@ -114,45 +114,49 @@ class Conductor {
             print("Could not locate the wav files.")
         }
         
-        // kick node
+        // kick sampler node into a delay
         kickOneDelay = AKDelay(kickSampler)
         kickOneDelay.time = 0.03 // seconds
         kickOneDelay.feedback  = 0.02 // Normalized Value 0 - 1
         kickOneDelay.dryWetMix = 0.3  // Normalized Value 0 - 1
         kickOneDelay.lowPassCutoff = 15000
         
+        // kick distortion
         kickOneDistortion = AKDistortion(kickOneDelay)
-        kickOneDistortion.squaredTerm = 0.8
+        kickOneDistortion.squaredTerm = 0.0
         kickOneDistortion.cubicTerm = 1.0
         kickOneDistortion.decay = 7.0
-        kickOneDistortion.delay = 0.1
+        kickOneDistortion.delay = 0.3
         kickOneDistortion.delayMix = 0.1
         kickOneDistortion.rounding = 0.1
-        kickOneDistortion.softClipGain = 6.0
+        kickOneDistortion.softClipGain = 7.0
         kickOneDistortion.polynomialMix = 0.0
         kickOneDistortion.finalMix = 0.7
         kickOneDistortion.decimation = 0.1
-        kickOneDistortion.decimationMix = 0.8
+        kickOneDistortion.decimationMix = 1.0
         
+        // kick reverb
         kickOneReverb = AKReverb(kickOneDistortion)
-        kickOneReverb.dryWetMix = 0.5
-        kickOneReverb.loadFactoryPreset(.smallRoom)
+        kickOneReverb.dryWetMix = 0.15
+        kickOneReverb.loadFactoryPreset(.mediumChamber)
         
-        // snare node
+        // snare sampler node into a delay
         snareDelay = AKDelay(snareSampler)
         snareDelay.time = 0.2 // seconds
         snareDelay.feedback  = 0.2 // Normalized Value 0 - 1
         snareDelay.dryWetMix = 0.01  // Normalized Value 0 - 1
         snareDelay.lowPassCutoff = 15000
         
+        // snare distortion
         snareDistortion = AKDistortion(snareDelay)
         snareDistortion.finalMix = 0.0
         
+        // snare reverb
         snareReverb = AKReverb(snareDistortion)
         snareReverb.dryWetMix = 0.1
         snareReverb.loadFactoryPreset(.largeHall)
         
-        // Combine the kick and snare drum samples output into a mixer.
+        // Combine the ending result of the kick and snare nodes, and combine them with a mixer.
         instrumentMixer = AKMixer(kickOneReverb, snareReverb)
         
         // Connect the mixer output to the booster node.
