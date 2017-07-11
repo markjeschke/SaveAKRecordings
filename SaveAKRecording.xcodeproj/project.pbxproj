@@ -14,12 +14,6 @@
 		F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */; };
 		F71D195C1EF3532A00523ACB /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; };
 		F71D195D1EF3532A00523ACB /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F71D19601EF3532A00523ACB /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19581EF3532A00523ACB /* RxCocoa.framework */; };
-		F71D19611EF3532A00523ACB /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19581EF3532A00523ACB /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F71D19621EF3532A00523ACB /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19591EF3532A00523ACB /* RxDataSources.framework */; };
-		F71D19631EF3532A00523ACB /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19591EF3532A00523ACB /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F71D19641EF3532A00523ACB /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D195A1EF3532A00523ACB /* RxSwift.framework */; };
-		F71D19651EF3532A00523ACB /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D195A1EF3532A00523ACB /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D196B1EF3536F00523ACB /* InstrumentType.swift */; };
 		F71D19701EF3536F00523ACB /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D196C1EF3536F00523ACB /* Instrument.swift */; };
 		F71D19731EF3545300523ACB /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = F71D19721EF3545300523ACB /* Sounds */; };
@@ -37,10 +31,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F71D19651EF3532A00523ACB /* RxSwift.framework in Embed Frameworks */,
-				F71D19611EF3532A00523ACB /* RxCocoa.framework in Embed Frameworks */,
 				F71D195D1EF3532A00523ACB /* AudioKit.framework in Embed Frameworks */,
-				F71D19631EF3532A00523ACB /* RxDataSources.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,11 +47,6 @@
 		F71D19301EF351A300523ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F71D19321EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F71D19561EF3532A00523ACB /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = ../Carthage/Build/iOS/AudioKit.framework; sourceTree = "<group>"; };
-		F71D19571EF3532A00523ACB /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = ../Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
-		F71D19581EF3532A00523ACB /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		F71D19591EF3532A00523ACB /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = ../Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
-		F71D195A1EF3532A00523ACB /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		F71D195B1EF3532A00523ACB /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = ../Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		F71D196B1EF3536F00523ACB /* InstrumentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentType.swift; sourceTree = "<group>"; };
 		F71D196C1EF3536F00523ACB /* Instrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		F71D19721EF3545300523ACB /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
@@ -78,10 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F71D19641EF3532A00523ACB /* RxSwift.framework in Frameworks */,
-				F71D19601EF3532A00523ACB /* RxCocoa.framework in Frameworks */,
 				F71D195C1EF3532A00523ACB /* AudioKit.framework in Frameworks */,
-				F71D19621EF3532A00523ACB /* RxDataSources.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,11 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				F71D19561EF3532A00523ACB /* AudioKit.framework */,
-				F71D19571EF3532A00523ACB /* RxBlocking.framework */,
-				F71D19581EF3532A00523ACB /* RxCocoa.framework */,
-				F71D19591EF3532A00523ACB /* RxDataSources.framework */,
-				F71D195A1EF3532A00523ACB /* RxSwift.framework */,
-				F71D195B1EF3532A00523ACB /* RxTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

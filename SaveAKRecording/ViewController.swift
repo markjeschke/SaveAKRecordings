@@ -22,12 +22,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeUI()
+        
+    }
+    
+    private func initializeUI() {
         self.recordPlayToggleButton.setTitle("◉ Record", for: .normal)
         self.recordPlayToggleButton.setTitleColor(.recordColor, for: .normal)
         self.recordPlayToggleButton.layer.cornerRadius = 5.0
         self.recordPlayToggleButton.layer.borderWidth = 0.5
         self.recordPlayToggleButton.layer.borderColor = UIColor.recordColor.cgColor
-        
+        self.exportBtn.isEnabled = false
     }
     
     //MARK: IBActions
@@ -51,17 +56,16 @@ class ViewController: UIViewController {
             self.recordPlayToggleButton.setTitleColor(.playColor, for: .normal)
             self.recordPlayToggleButton.layer.backgroundColor = UIColor.clear.cgColor
             recordPlayToggleButton.layer.borderColor = UIColor.playColor.cgColor
+            self.exportBtn.isEnabled = true
         }
     }
     
     @IBAction func triggerKick() {
         conductor.playKick()
-        //self.change(color: .darkGray)
     }
     
     @IBAction func triggerSnare() {
         conductor.playSnare()
-        //self.change(color: .darkGray)
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
