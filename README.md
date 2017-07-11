@@ -16,6 +16,6 @@ The AudioKit framework in this project was installed using [Carthage](https://gi
 cd <path/to/the/SaveAKRecordings repo>
 ```
 ```
-carthage update
+carthage update --platform ios
 ```
 Launch the SaveAKRecordings.xcodeproj file, build, and run the project.
