@@ -31,3 +31,7 @@ brew install carthage
 carthage update --platform ios
 ```
 Launch the SaveAKRecordings.xcodeproj file, build, and run the project.
+
+## Please Note!
+
+When you build and run the Xcode project, you will notice 12 deprecation warnings, which are related to the AudioShare SDK framework needing to be updated. This will not affect your app.
