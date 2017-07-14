@@ -8,7 +8,7 @@ Swift Xcode Project that demonstrates how to record, save, and send audio files,
 4. AirDrop
 5. iTunes File Sharing
 
-## Getting Started
+## Installation
 
 The AudioKit framework in this project was installed using [Carthage](https://github.com/Carthage/Carthage), but it wasn't included in this repo. In order to install AudioKit to run and build this project successfully, please run the following command in Terminal:
 
@@ -31,7 +31,3 @@ brew install carthage
 carthage update --platform ios
 ```
 Launch the SaveAKRecordings.xcodeproj file, build, and run the project.
-
-## Please Note!
-
-When you build and run the Xcode project, you will notice 12 deprecation warnings, which are related to the AudioShare SDK framework needing to be updated. This will not affect your app.
