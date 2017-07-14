@@ -70,7 +70,7 @@ class ViewController: UIViewController {
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
 
-        let alertController = UIAlertController(title: "Export Audio Recording", message: "\"\(self.conductor.exportedAudioFile)\"", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Export Audio Recording", message: "\"\(self.conductor.exportedAudioFile)\"", preferredStyle: .actionSheet)
         
         // AudioShare
         let audioShareAction = UIAlertAction(title: "AudioShare", style: .default) { (action) in
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
             self.exportTap()
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertController.addAction(audioShareAction)
         alertController.addAction(emailAction)
