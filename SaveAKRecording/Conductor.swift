@@ -86,7 +86,7 @@ class Conductor {
         AKSettings.bufferLength = .medium
         
         do {
-            try AKSettings.setSession(category: .playAndRecord, with: .allowBluetoothA2DP)
+            try AKSettings.setSession(category: .playAndRecord, with: .mixWithOthers)
         } catch {
             AKLog("Could not set session category.")
         }
