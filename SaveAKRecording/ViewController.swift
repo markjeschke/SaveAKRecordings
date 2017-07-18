@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             self.exportToEmail()
         }
         // Share
-        let shareAction = UIAlertAction(title: "More options", style: .default) { (action) in
+        let shareAction = UIAlertAction(title: "More sharing options", style: .default) { (action) in
             self.exportTap()
         }
         

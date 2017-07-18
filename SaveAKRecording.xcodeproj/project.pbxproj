@@ -170,6 +170,7 @@
 				F71D19201EF351A300523ACB /* Frameworks */,
 				F71D19211EF351A300523ACB /* Resources */,
 				F71D19681EF3532A00523ACB /* Embed Frameworks */,
+				F7119A1C1F1EC24800977D0D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -229,6 +230,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F7119A1C1F1EC24800977D0D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AudioKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F71D191F1EF351A300523ACB /* Sources */ = {
