@@ -26,6 +26,12 @@ class ViewController: UIViewController {
         
         initializeUI()
         
+        conductor.showFiles()
+        if (conductor.recordingsFound) {
+            exportBtn.isEnabled = true
+        } else {
+            exportBtn.isEnabled = false
+        }
     }
     
     private func initializeUI() {
@@ -44,40 +50,50 @@ class ViewController: UIViewController {
     //MARK: IBActions
     @IBAction func recordToggleAction(_ sender: UIButton) {
         conductor.recordToggle()
+        print("conductor.playingState: \(conductor.playingState)")
         switch(conductor.recordingState) {
         case .readyToRecord:
-            conductor.player.stop()
-            do {
-                try conductor.recorder.reset()
-            } catch { print("Errored resetting.") }
-            
-            //try? player.replaceFile((recorder.audioFile)!)
-            //setupUIForRecording()
-            //conductor.recordToggle()
+            if (conductor.playingState == .readyToPlay || conductor.playingState == .playing) {
+                do {
+                    try conductor.recorder.reset()
+                } catch {
+                    print("Errored resetting.")
+                }
+            }
             recordToggleButton.setTitle("◉ Record", for: .normal)
             recordToggleButton.setTitleColor(.recordColor, for: .normal)
             recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor
             recordToggleButton.layer.backgroundColor = UIColor.clear.cgColor
-            playStopToggleButton.isEnabled = true
             playButtonFormatting()
+            exportBtn.isEnabled = true
         case .recording:
             recordToggleButton.setTitle("◼︎ Stop", for: .normal)
             recordToggleButton.setTitleColor(.white, for: .normal)
             recordToggleButton.layer.backgroundColor = UIColor.recordColor.cgColor
             playStopToggleButton.isEnabled = false
+            playStopToggleButton.setTitleColor(.lightGray, for: .normal)
+            playStopToggleButton.layer.borderColor = UIColor.lightGray.cgColor
+            playStopToggleButton.layer.backgroundColor = UIColor.clear.cgColor
         }
     }
     
-    @IBAction func playStopToggleAction(_ sender: UIButton) {
+    @IBAction func playStopToggleAction(_ sender: Any) {
         conductor.playStopToggle()
         switch(conductor.playingState) {
         case .playing:
             playStopToggleButton.setTitle("◼︎ Stop", for: .normal)
             playStopToggleButton.setTitleColor(.white, for: .normal)
             playStopToggleButton.layer.backgroundColor = UIColor.playColor.cgColor
+            recordToggleButton.isEnabled = false
+            recordToggleButton.setTitleColor(.lightGray, for: .normal)
+            recordToggleButton.layer.borderColor = UIColor.lightGray.cgColor
+            recordToggleButton.layer.backgroundColor = UIColor.clear.cgColor
         case .readyToPlay:
+            recordToggleButton.setTitleColor(.recordColor, for: .normal)
+            recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor
+            recordToggleButton.layer.backgroundColor = UIColor.clear.cgColor
             playButtonFormatting()
-            exportBtn.isEnabled = true
+            recordToggleButton.isEnabled = true
         case .disabled:
             playStopToggleButton.isEnabled = false
         }

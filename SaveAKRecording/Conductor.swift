@@ -81,6 +81,7 @@ class Conductor {
     var audioFileDuration = "00:00:00"
     var exportedAudio: URL?
     var audioFormat:Format = .m4a // Set the audio format. This should be set by the user via UISegmentedControl.
+    var recordingsFound = false
     
     init() {
         
@@ -235,7 +236,7 @@ class Conductor {
     internal func playingEnded() {
         DispatchQueue.main.async {
             print("Finished playing the audio file.")
-            self.setupUIForPlaying ()
+            self.setupUIForPlaying()
         }
     }
     
@@ -267,15 +268,15 @@ class Conductor {
                                                             print("Export succeeded")
                                                         }
                 }
-                setupUIForPlaying ()
+                setupUIForPlaying()
                 recordingState = .readyToRecord
                 playingState = .readyToPlay
+                showFiles()
             }
         }
     }
     
     internal func playStopToggle() {
-        print("playinhState: \(playingState)")
         switch playingState {
         case .readyToPlay:
             player.play()
@@ -287,13 +288,13 @@ class Conductor {
         case .disabled:
             break
         }
+        print("playingState: \(playingState)")
     }
     
     internal func setupUIForPlaying() {
         let recordedDuration = player != nil ? player.audioFile.duration: 0
         print("Recorded: \(String(format: "%0.1f", recordedDuration)) seconds")
         audioFileDuration = timecodeFormatter.convertSecondsToTimecode(totalSeconds: Int(recordedDuration))
-        showFiles()
     }
     
     internal func getDocumentsDirectory() -> String {
@@ -323,11 +324,15 @@ class Conductor {
             let items = try FileManager.default.contentsOfDirectory(atPath: getDocumentsDirectory())
             
             for item in items {
-                print("Found \(item)")
+                print("Found: \(item)")
             }
+            recordingsFound = true
         } catch {
             print("Can't find any items")
+            recordingsFound = false
         }
+        
+        print("recordingsFound: \(recordingsFound)")
 
     }
     
