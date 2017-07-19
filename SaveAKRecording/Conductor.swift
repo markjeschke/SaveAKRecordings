@@ -10,11 +10,15 @@ import AudioKit
 
 class Conductor {
     
-    enum State {
+    enum RecordingState {
         case readyToRecord
         case recording
+    }
+    
+    enum PlayingState {
         case readyToPlay
         case playing
+        case disabled
     }
     
     enum Format: String {
@@ -66,7 +70,8 @@ class Conductor {
     var distortion: AKDistortion!
     var distortionMixer: AKDryWetMixer!
     
-    var state: State = .readyToRecord
+    var recordingState: RecordingState = .readyToRecord
+    var playingState: PlayingState = .disabled
     var recorder: AKNodeRecorder!
     var player: AKAudioPlayer!
     var exportedAudioFileName = "SavedAudioKitFile"
@@ -75,7 +80,7 @@ class Conductor {
     let timecodeFormatter = TimecodeFormatter()
     var audioFileDuration = "00:00:00"
     var exportedAudio: URL?
-    var audioFormat:Format = .m4a // Set the audio format. This should be set by the user via UISegmentedController.
+    var audioFormat:Format = .m4a // Set the audio format. This should be set by the user via UISegmentedControl.
     
     init() {
         
@@ -201,7 +206,7 @@ class Conductor {
         distortionMixer = AKDryWetMixer(reverbMixer, distortion)
         distortionMixer.balance = 0.5
         
-        // Connect the recorder to the output of the eq.
+        // Connect the recorder to the output of the distortionMixer(with reverbMixer).
         recorder = try? AKNodeRecorder(node: distortionMixer)
         if let file = recorder.audioFile {
             player = try? AKAudioPlayer(file: file)
@@ -209,7 +214,7 @@ class Conductor {
         player.looping = true
         player.completionHandler = playingEnded
         
-        // Mix the distortionMixer and player node into the outputMixer.
+        // Mix the distortionMixer(with reverbMixer) and player node into the outputMixer.
         outputMixer = AKMixer(distortionMixer, player)
         
         // Connect the end of the audio chain to the AudioKit engine output.
@@ -234,12 +239,13 @@ class Conductor {
         }
     }
     
-    internal func recordPlayToggle() {
-        print("state: \(state)")
-        switch state {
+    internal func recordToggle() {
+        print("state: \(recordingState)")
+        switch recordingState {
         case .readyToRecord :
             // Recording...
-            state = .recording
+            recordingState = .recording
+            playingState = .disabled
             do {
                 try recorder.record()
             } catch { print("Error recording.") }
@@ -262,23 +268,32 @@ class Conductor {
                                                         }
                 }
                 setupUIForPlaying ()
+                recordingState = .readyToRecord
+                playingState = .readyToPlay
             }
-        case .readyToPlay :
-            player.play()
-            state = .playing
-        case .playing :
-            player.stop()
-            setupUIForPlaying()
         }
-        
     }
     
-    internal func setupUIForPlaying () {
+    internal func playStopToggle() {
+        print("playinhState: \(playingState)")
+        switch playingState {
+        case .readyToPlay:
+            player.play()
+            playingState = .playing
+        case .playing:
+            player.stop()
+            setupUIForPlaying()
+            playingState = .readyToPlay
+        case .disabled:
+            break
+        }
+    }
+    
+    internal func setupUIForPlaying() {
         let recordedDuration = player != nil ? player.audioFile.duration: 0
         print("Recorded: \(String(format: "%0.1f", recordedDuration)) seconds")
         audioFileDuration = timecodeFormatter.convertSecondsToTimecode(totalSeconds: Int(recordedDuration))
         showFiles()
-        state = .readyToPlay
     }
     
     internal func getDocumentsDirectory() -> String {
@@ -300,7 +315,6 @@ class Conductor {
         
         if var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             path.appendPathComponent(self.exportedAudioFile)
-            print("path: \(String(describing: path))")
             exportedAudio = path
         }
         
