@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var conductor = Conductor.sharedInstance
     let emailComposer = EmailComposer()
     
+    @IBOutlet weak var audioFormatSelectorSegmentedControl: UISegmentedControl!
     @IBOutlet weak var kickButton: UIButton!
     @IBOutlet weak var snareButton: UIButton!
     @IBOutlet weak var recordPlayToggleButton: UIButton!
@@ -94,6 +95,24 @@ class ViewController: UIViewController {
         
         self.present(alertController, animated: true)
 
+    }
+    
+    @IBAction func audioFormatSelectorAction(_ sender: Any) {
+        switch audioFormatSelectorSegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            conductor.audioFormat = .m4a
+        case 1:
+            conductor.audioFormat = .mp4
+        case 2:
+            conductor.audioFormat = .caf
+        case 3:
+            conductor.audioFormat = .aif
+        case 4:
+            conductor.audioFormat = .wav
+        default:
+            conductor.audioFormat = .m4a
+        }
     }
     
     func exportToEmail() {

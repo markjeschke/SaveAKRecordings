@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
-                                <rect key="frame" x="143" y="157" width="90" height="38"/>
+                                <rect key="frame" x="143" y="197" width="90" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Kick"/>
                                 <connections>
@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
-                                <rect key="frame" x="138" y="215" width="100" height="38"/>
+                                <rect key="frame" x="138" y="255" width="100" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Snare"/>
                                 <connections>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
-                                <rect key="frame" x="77" y="275" width="222" height="38"/>
+                                <rect key="frame" x="77" y="315" width="222" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Export Audio Recording"/>
                                 <connections>
@@ -46,27 +46,44 @@
                                 </connections>
                             </button>
                             <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
-                                <rect key="frame" x="124" y="104" width="127" height="28"/>
+                                <rect key="frame" x="124" y="144" width="127" height="28"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
                                 <state key="normal" title="◉ Record"/>
                                 <connections>
                                     <action selector="recordPlayToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="JWA-6z-Twc"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FW0-UA-i0d">
+                                <rect key="frame" x="26" y="82" width="322" height="29"/>
+                                <segments>
+                                    <segment title="m4a"/>
+                                    <segment title="mp4"/>
+                                    <segment title="caf"/>
+                                    <segment title="aif"/>
+                                    <segment title="wav"/>
+                                </segments>
+                                <connections>
+                                    <action selector="audioFormatSelectorAction:" destination="NcP-GZ-f4w" eventType="valueChanged" id="YOG-hA-Ej3"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kyH-RI-SuY" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="0gg-L6-FBM"/>
                             <constraint firstItem="fVj-r0-gxf" firstAttribute="top" secondItem="kyH-RI-SuY" secondAttribute="bottom" constant="25" id="3UB-sE-FHE"/>
                             <constraint firstItem="15l-py-KvB" firstAttribute="top" secondItem="fVj-r0-gxf" secondAttribute="bottom" constant="20" id="EOf-ax-BzN"/>
+                            <constraint firstItem="FW0-UA-i0d" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="62" id="F0C-J6-uhZ"/>
                             <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="15l-py-KvB" secondAttribute="bottom" constant="22" id="GX2-ms-UJ0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FW0-UA-i0d" secondAttribute="trailing" constant="11" id="I93-oB-Gtj"/>
                             <constraint firstItem="kyH-RI-SuY" firstAttribute="centerX" secondItem="fVj-r0-gxf" secondAttribute="centerX" id="RTg-0w-pfd"/>
                             <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="15l-py-KvB" secondAttribute="centerX" id="lZl-dP-YqU"/>
-                            <constraint firstItem="kyH-RI-SuY" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="84" id="uA7-HW-7Vd"/>
+                            <constraint firstItem="FW0-UA-i0d" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leadingMargin" constant="10" id="qaV-7W-nqq"/>
+                            <constraint firstItem="kyH-RI-SuY" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="124" id="uA7-HW-7Vd"/>
                             <constraint firstItem="15l-py-KvB" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" id="uln-3z-PPe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="audioFormatSelectorSegmentedControl" destination="FW0-UA-i0d" id="ocL-U8-xI9"/>
                         <outlet property="exportBtn" destination="YLn-vv-Jk5" id="oAJ-nM-gnh"/>
                         <outlet property="kickButton" destination="fVj-r0-gxf" id="oz6-zY-pkQ"/>
                         <outlet property="recordPlayToggleButton" destination="kyH-RI-SuY" id="7rL-Sk-Oou"/>
