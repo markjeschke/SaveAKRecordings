@@ -123,13 +123,6 @@ class ViewController: UIViewController {
         print("conductor.playingState: \(conductor.playingState)")
         switch(conductor.recordingState) {
         case .readyToRecord:
-            if (conductor.playingState == .readyToPlay || conductor.playingState == .playing) {
-                do {
-                    try conductor.recorder.reset()
-                } catch {
-                    print("Errored resetting.")
-                }
-            }
             recordToggleButton.setTitle("◉ Record", for: .normal)
             recordToggleButton.setTitleColor(.recordColor, for: .normal)
             recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor

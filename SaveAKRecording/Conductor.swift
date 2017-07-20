@@ -292,6 +292,13 @@ class Conductor {
         switch recordingState {
         case .readyToRecord :
             // Recording...
+            if (playingState == .readyToPlay || playingState == .playing) {
+                do {
+                    try recorder.reset()
+                } catch {
+                    print("Errored resetting.")
+                }
+            }
             recordingState = .recording
             playingState = .disabled
             do {
