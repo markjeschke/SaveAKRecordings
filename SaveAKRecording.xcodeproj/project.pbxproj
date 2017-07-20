@@ -14,7 +14,6 @@
 		F71D19311EF351A300523ACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */; };
 		F71D195C1EF3532A00523ACB /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; };
 		F71D195D1EF3532A00523ACB /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F71D19561EF3532A00523ACB /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D196B1EF3536F00523ACB /* InstrumentType.swift */; };
 		F71D19701EF3536F00523ACB /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D196C1EF3536F00523ACB /* Instrument.swift */; };
 		F71D19731EF3545300523ACB /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = F71D19721EF3545300523ACB /* Sounds */; };
 		F71D19761EF5A34800523ACB /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19751EF5A34800523ACB /* EmailComposer.swift */; };
@@ -47,7 +46,6 @@
 		F71D19301EF351A300523ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F71D19321EF351A300523ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F71D19561EF3532A00523ACB /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = ../Carthage/Build/iOS/AudioKit.framework; sourceTree = "<group>"; };
-		F71D196B1EF3536F00523ACB /* InstrumentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentType.swift; sourceTree = "<group>"; };
 		F71D196C1EF3536F00523ACB /* Instrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		F71D19721EF3545300523ACB /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		F71D19751EF5A34800523ACB /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				F71D196C1EF3536F00523ACB /* Instrument.swift */,
-				F71D196B1EF3536F00523ACB /* InstrumentType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -256,7 +253,6 @@
 				F71D19291EF351A300523ACB /* ViewController.swift in Sources */,
 				F7BEB0BB1EF7464100A744B6 /* UIColor+Palette.swift in Sources */,
 				F71D19881EF6394800523ACB /* AudioShareSDK.m in Sources */,
-				F71D196F1EF3536F00523ACB /* InstrumentType.swift in Sources */,
 				F7BEB0B61EF6CC2800A744B6 /* Conductor.swift in Sources */,
 				F71D19701EF3536F00523ACB /* Instrument.swift in Sources */,
 				F71D19761EF5A34800523ACB /* EmailComposer.swift in Sources */,

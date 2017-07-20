@@ -54,9 +54,9 @@ class Conductor {
     var instrumentMixer = AKMixer()
     var outputMixer = AKMixer()
     
-    var kickOneDelay: AKDelay!
-    var kickOneReverb: AKReverb!
-    var kickOneDistortion: AKDistortion!
+    var kickDelay: AKDelay!
+    var kickReverb: AKReverb!
+    var kickDistortion: AKDistortion!
     
     var snareDelay: AKDelay!
     var snareReverb: AKReverb!
@@ -101,7 +101,6 @@ class Conductor {
         }
         
         self.kickSampler = Instrument(
-            type: .kickOne,
             pitch: 60,
             samplePath: "Sounds/min_kick_02_C",
             midiNote: 36,
@@ -109,7 +108,6 @@ class Conductor {
             midiContinuousControl: 9)
         
         self.snareSampler = Instrument(
-            type: .snare,
             pitch: 60,
             samplePath: "Sounds/Ensoniq-ESQ-1-Snare",
             midiNote: 38,
@@ -123,31 +121,33 @@ class Conductor {
             print("Could not locate the wav files.")
         }
         
+        // Provide independent delay, distortion and reverb effects for the kick and snare drum sounds.
+        
         // kick sampler node into a delay
-        kickOneDelay = AKDelay(kickSampler)
-        kickOneDelay.time = 0.03 // seconds
-        kickOneDelay.feedback  = 0.02 // Normalized Value 0 - 1
-        kickOneDelay.dryWetMix = 0.0  // Normalized Value 0 - 1
-        kickOneDelay.lowPassCutoff = 15000
+        kickDelay = AKDelay(kickSampler)
+        kickDelay.time = 0.03 // seconds
+        kickDelay.feedback  = 0.02 // Normalized Value 0 - 1
+        kickDelay.dryWetMix = 0.0  // Normalized Value 0 - 1
+        kickDelay.lowPassCutoff = 15000
         
         // kick distortion
-        kickOneDistortion = AKDistortion(kickOneDelay)
-        kickOneDistortion.squaredTerm = 0.4
-        kickOneDistortion.cubicTerm = 1.0
-        kickOneDistortion.decay = 7.0
-        kickOneDistortion.delay = 0.3
-        kickOneDistortion.delayMix = 0.1
-        kickOneDistortion.rounding = 0.0
-        kickOneDistortion.softClipGain = 7.0
-        kickOneDistortion.polynomialMix = 0.0
-        kickOneDistortion.finalMix = 0.3
-        kickOneDistortion.decimation = 0.6
-        kickOneDistortion.decimationMix = 1.0
+        kickDistortion = AKDistortion(kickDelay)
+        kickDistortion.squaredTerm = 0.4
+        kickDistortion.cubicTerm = 1.0
+        kickDistortion.decay = 7.0
+        kickDistortion.delay = 0.3
+        kickDistortion.delayMix = 0.1
+        kickDistortion.rounding = 0.0
+        kickDistortion.softClipGain = 7.0
+        kickDistortion.polynomialMix = 0.0
+        kickDistortion.finalMix = 0.3
+        kickDistortion.decimation = 0.6
+        kickDistortion.decimationMix = 1.0
         
         // kick reverb
-        kickOneReverb = AKReverb(kickOneDistortion)
-        kickOneReverb.dryWetMix = 0.15
-        kickOneReverb.loadFactoryPreset(.mediumRoom)
+        kickReverb = AKReverb(kickDistortion)
+        kickReverb.dryWetMix = 0.15
+        kickReverb.loadFactoryPreset(.mediumRoom)
         
         // snare sampler node into a delay
         snareDelay = AKDelay(snareSampler)
@@ -162,11 +162,11 @@ class Conductor {
         
         // snare reverb
         snareReverb = AKReverb(snareDistortion)
-        snareReverb.dryWetMix = 0.1
+        snareReverb.dryWetMix = 0.3
         snareReverb.loadFactoryPreset(.largeHall)
         
         // Combine the ending result of the kick and snare nodes, and combine them with a mixer.
-        instrumentMixer = AKMixer(kickOneReverb, snareReverb)
+        instrumentMixer = AKMixer(kickReverb, snareReverb)
         
         // Connect the mixer output to the booster node.
         booster = AKBooster(instrumentMixer)
@@ -244,7 +244,7 @@ class Conductor {
     }
     
     // Print out all of the found files in the Documents directory.
-    internal func listFilesOnDevice() {
+    internal func showFilesOnDevice() {
 
         do {
             directoryContent = try FileManager.default.contentsOfDirectory(atPath: recordingPath)
@@ -278,7 +278,6 @@ class Conductor {
                 }
             }
         }
-        listFilesOnDevice()
     }
     
     internal func playingEnded() {
@@ -297,8 +296,9 @@ class Conductor {
             playingState = .disabled
             do {
                 try recorder.record()
-            } catch { print("Error recording.") }
-            
+            } catch {
+                print("Error recording.")
+            }
         case .recording :
             do {
                 try player.reloadFile()
@@ -320,7 +320,7 @@ class Conductor {
                 setupUIForPlaying()
                 recordingState = .readyToRecord
                 playingState = .readyToPlay
-                showFiles()
+                setExportedAudioPath()
             }
         }
     }
@@ -346,28 +346,24 @@ class Conductor {
         audioFileDuration = timecodeFormatter.convertSecondsToTimecode(totalSeconds: Int(recordedDuration))
     }
     
-    internal func getDocumentsDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true) as [String]
-        return paths[0]
-    }
-    
-    internal func showFiles() {
+    internal func setExportedAudioPath() {
 
-        print("show files")
-
-        if let exportedAudioPath = String(getDocumentsDirectory()) {
+        if let exportedAudioPath = String(recordingPath) {
             self.exportedAudioFilePath = exportedAudioPath
             print("self.exportedAudioFilePath: \(String(describing: self.exportedAudioFilePath))")
         }
 
+        // Concatenate the exported audio file name with the audio format extension.
         self.exportedAudioFile = "\(self.exportedAudioFileName)\(self.audioFormat.rawValue)"
         
+        // Append the exported audio file name to the URL.
         if var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             path.appendPathComponent(self.exportedAudioFile)
             exportedAudio = path
         }
         
-        listFilesOnDevice()
+        // Show all of the files on the device, if they exist.
+        showFilesOnDevice()
 
     }
     

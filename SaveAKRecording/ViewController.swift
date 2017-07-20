@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         
         initializeUI()
         
-        conductor.showFiles()
+        conductor.setExportedAudioPath()
         if (conductor.recordingsFound) {
             exportBtn.isEnabled = true
             deleteAllRecordingsButton.isEnabled = true
@@ -172,10 +172,10 @@ class ViewController: UIViewController {
     
     @IBAction func deleteAllRecordingsAction(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Delete all recordings", message: "Are you sure?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        // Delete action
-        let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+        // Select destructive style when deleting or changing data.
+        let deleteAction = UIAlertAction(title: "Delete All Recordings", style: .destructive) { (action) in
             self.deleteAudioFiles()
         }
         
@@ -197,7 +197,7 @@ class ViewController: UIViewController {
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
 
-        let alertController = UIAlertController(title: "Export Audio Recording", message: "\"\(self.conductor.exportedAudioFile)\"", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "\"\(self.conductor.exportedAudioFile)\"", message: nil, preferredStyle: .actionSheet)
         
         // AudioShare SDK
         let audioShareAction = UIAlertAction(title: "AudioShare", style: .default) { (action) in

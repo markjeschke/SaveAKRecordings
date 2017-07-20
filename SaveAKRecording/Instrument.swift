@@ -19,21 +19,19 @@ struct GlobalEffectParams {
 }
 
 class Instrument: AKMIDISampler {
-  var type: InstrumentType = .kickOne
   var pitch: MIDINoteNumber
   var samplePath: String
   var midiNote: MIDINoteNumber
   var midiProgramChange: MIDIByte
   var midiContinuousControl: MIDIByte
   
-  init(type: InstrumentType,
+  init(
        pitch: MIDINoteNumber,
        samplePath: String,
        midiNote: MIDINoteNumber,
        midiProgramChange: MIDIByte,
        midiContinuousControl: MIDIByte)
   {
-    self.type = type
     self.pitch = pitch
     self.samplePath = samplePath
     self.midiNote = midiNote
