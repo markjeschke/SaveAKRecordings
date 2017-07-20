@@ -34,32 +34,24 @@
                                     <action selector="audioFormatSelectorAction:" destination="NcP-GZ-f4w" eventType="valueChanged" id="YOG-hA-Ej3"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
-                                <rect key="frame" x="115" y="145" width="90" height="38"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Kick"/>
-                                <connections>
-                                    <action selector="triggerKick" destination="NcP-GZ-f4w" eventType="touchDown" id="6Av-lg-GLT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
-                                <rect key="frame" x="110" y="203" width="100" height="38"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Snare"/>
-                                <connections>
-                                    <action selector="triggerSnare" destination="NcP-GZ-f4w" eventType="touchDown" id="Qr8-bL-7vh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
-                                <rect key="frame" x="49" y="263" width="222" height="38"/>
+                                <rect key="frame" x="49" y="223" width="222" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Export Audio Recording"/>
                                 <connections>
                                     <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6E-5U-Pj1">
+                                <rect key="frame" x="57" y="271" width="207" height="38"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                <state key="normal" title="Delete All Recordings"/>
+                                <connections>
+                                    <action selector="deleteAllRecordingsAction:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="pX6-4A-30N"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-K7-fwm">
-                                <rect key="frame" x="17.5" y="95" width="285" height="28"/>
+                                <rect key="frame" x="18" y="95" width="285" height="28"/>
                                 <subviews>
                                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="28"/>
@@ -85,24 +77,47 @@
                                     <constraint firstAttribute="width" constant="285" id="IhO-BW-9Fu"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="a3z-E6-kbD">
+                                <rect key="frame" x="58" y="162" width="205" height="38"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                        <state key="normal" title="Kick"/>
+                                        <connections>
+                                            <action selector="triggerKick" destination="NcP-GZ-f4w" eventType="touchDown" id="6Av-lg-GLT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
+                                        <rect key="frame" x="105" y="0.0" width="100" height="38"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                        <state key="normal" title="Snare"/>
+                                        <connections>
+                                            <action selector="triggerSnare" destination="NcP-GZ-f4w" eventType="touchDown" id="Qr8-bL-7vh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="W6E-5U-Pj1" firstAttribute="top" secondItem="YLn-vv-Jk5" secondAttribute="bottom" constant="10" id="0Js-GZ-B4d"/>
                             <constraint firstItem="FW0-UA-i0d" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="6pM-SL-cb7"/>
+                            <constraint firstItem="a3z-E6-kbD" firstAttribute="top" secondItem="TRv-K7-fwm" secondAttribute="bottom" constant="39" id="7gc-9y-07p"/>
                             <constraint firstItem="YLn-vv-Jk5" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="8ja-79-xKQ"/>
                             <constraint firstItem="FW0-UA-i0d" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leadingMargin" id="8kb-yB-PiI"/>
-                            <constraint firstItem="fVj-r0-gxf" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="B1Z-bK-NU0"/>
                             <constraint firstItem="TRv-K7-fwm" firstAttribute="top" secondItem="FW0-UA-i0d" secondAttribute="bottom" constant="25" id="FR0-bT-Eju"/>
+                            <constraint firstItem="W6E-5U-Pj1" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="GJ3-N6-aS4"/>
+                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="a3z-E6-kbD" secondAttribute="bottom" constant="23" id="Hhv-uK-ioN"/>
                             <constraint firstItem="FW0-UA-i0d" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="22" id="REj-Pv-i59"/>
-                            <constraint firstItem="15l-py-KvB" firstAttribute="top" secondItem="fVj-r0-gxf" secondAttribute="bottom" constant="20" id="Wec-hk-X25"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="15l-py-KvB" secondAttribute="bottom" constant="22" id="mZZ-bQ-gKk"/>
-                            <constraint firstItem="fVj-r0-gxf" firstAttribute="top" secondItem="TRv-K7-fwm" secondAttribute="bottom" constant="22" id="qSg-XJ-rAX"/>
+                            <constraint firstItem="a3z-E6-kbD" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" id="Sqe-9v-8zT"/>
                             <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="ryi-EG-qiQ"/>
-                            <constraint firstItem="15l-py-KvB" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="xgJ-PI-TsR"/>
+                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="centerX" secondItem="W6E-5U-Pj1" secondAttribute="centerX" id="wv9-MW-c0h"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="audioFormatSelectorSegmentedControl" destination="FW0-UA-i0d" id="ocL-U8-xI9"/>
+                        <outlet property="deleteAllRecordingsButton" destination="W6E-5U-Pj1" id="lBF-G6-DCX"/>
                         <outlet property="exportBtn" destination="YLn-vv-Jk5" id="oAJ-nM-gnh"/>
                         <outlet property="kickButton" destination="fVj-r0-gxf" id="oz6-zY-pkQ"/>
                         <outlet property="playStopToggleButton" destination="Gr3-vr-Aaw" id="b8B-f9-aoN"/>

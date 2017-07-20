@@ -82,11 +82,14 @@ class Conductor {
     var exportedAudio: URL?
     var audioFormat:Format = .m4a // Set the audio format. This should be set by the user via UISegmentedControl.
     var recordingsFound = false
+    var directoryContent = [String()]
+    let documentsFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)
+    var recordingPath = ""
     
     init() {
         
         // Clean tempFiles !
-        AKAudioFile.cleanTempDirectory()
+        //AKAudioFile.cleanTempDirectory()
         
         // Session settings
         AKSettings.bufferLength = .medium
@@ -231,6 +234,51 @@ class Conductor {
         AudioKit.start()
         print("Audio engine started")
         
+        recordingPath = documentsFolder[0]
+        
+        print("documentsFolder: \(documentsFolder)")
+        print("recordingPath: \(recordingPath)")
+        
+        deleteAllFiles()
+        
+    }
+    
+    // Print out all of the found files in the Documents directory.
+    internal func listFilesOnDevice() {
+
+        do {
+            directoryContent = try FileManager.default.contentsOfDirectory(atPath: recordingPath)
+            for item in directoryContent {
+                print("Found: \(item)")
+            }
+            if directoryContent.count > 0 {
+                print("directoryContent.count: \(directoryContent.count)")
+                recordingsFound = true
+            } else {
+                recordingsFound = false
+            }
+        } catch {
+            print("Can't find any items")
+        }
+        
+        print("directoryContent: \(directoryContent)")
+        print("directoryContent.count: \(directoryContent.count)")
+        print("recordingsFound: \(recordingsFound)")
+        
+    }
+    
+    internal func deleteAllFiles() {
+        if (directoryContent.count > 0) {
+            for fileName in directoryContent {
+                let filePathName = "\(recordingPath)/\(fileName)"
+                do {
+                    try FileManager.default.removeItem(atPath: filePathName)
+                } catch {
+                    print("No files found to delete")
+                }
+            }
+        }
+        listFilesOnDevice()
     }
     
     internal func playingEnded() {
@@ -254,8 +302,9 @@ class Conductor {
         case .recording :
             do {
                 try player.reloadFile()
-            } catch { print("Error reloading.") }
-            
+            } catch {
+                print("Error reloading.")
+            }
             let recordedDuration = player != nil ? player.audioFile.duration  : 0
             if recordedDuration > 0.0 {
                 recorder.stop()
@@ -305,7 +354,6 @@ class Conductor {
     internal func showFiles() {
 
         print("show files")
-        print("getDocumentsDirectory: \(getDocumentsDirectory())")
 
         if let exportedAudioPath = String(getDocumentsDirectory()) {
             self.exportedAudioFilePath = exportedAudioPath
@@ -319,20 +367,7 @@ class Conductor {
             exportedAudio = path
         }
         
-        // Print out all of the found files in the Documents directory.
-        do {
-            let items = try FileManager.default.contentsOfDirectory(atPath: getDocumentsDirectory())
-            
-            for item in items {
-                print("Found: \(item)")
-            }
-            recordingsFound = true
-        } catch {
-            print("Can't find any items")
-            recordingsFound = false
-        }
-        
-        print("recordingsFound: \(recordingsFound)")
+        listFilesOnDevice()
 
     }
     

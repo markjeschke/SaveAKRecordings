@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var audioFormatSelectorSegmentedControl: UISegmentedControl!
     @IBOutlet weak var kickButton: UIButton!
+    @IBOutlet weak var deleteAllRecordingsButton: UIButton!
     @IBOutlet weak var snareButton: UIButton!
     @IBOutlet weak var recordToggleButton: UIButton!
     @IBOutlet weak var playStopToggleButton: UIButton!
@@ -29,8 +30,10 @@ class ViewController: UIViewController {
         conductor.showFiles()
         if (conductor.recordingsFound) {
             exportBtn.isEnabled = true
+            deleteAllRecordingsButton.isEnabled = true
         } else {
             exportBtn.isEnabled = false
+            deleteAllRecordingsButton.isEnabled = false
         }
     }
     
@@ -38,6 +41,7 @@ class ViewController: UIViewController {
         recordToggleButton.setTitle("◉ Record", for: .normal)
         recordToggleButton.setTitleColor(.recordColor, for: .normal)
         recordToggleButton.layer.cornerRadius = 5.0
+        
         recordToggleButton.layer.borderWidth = 0.5
         recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor
         playStopToggleButton.setTitle("▶︎ Play", for: .normal)
@@ -47,7 +51,73 @@ class ViewController: UIViewController {
         playStopToggleButton.isEnabled = false
     }
     
-    //MARK: IBActions
+    private func playButtonFormatting() {
+        playStopToggleButton.setTitle("▶︎ Play", for: .normal)
+        playStopToggleButton.setTitleColor(.playColor, for: .normal)
+        playStopToggleButton.layer.backgroundColor = UIColor.clear.cgColor
+        playStopToggleButton.layer.borderColor = UIColor.playColor.cgColor
+        playStopToggleButton.isEnabled = true
+    }
+    
+    // MARK: === Export via Email ===
+    
+    private func exportToEmail() {
+        let configuredMailComposeViewController = emailComposer.configuredMailComposeViewController()
+        if emailComposer.canSendMail() {
+            present(configuredMailComposeViewController, animated: true, completion: nil)
+        } else {
+            showSendMailErrorAlert()
+        }
+    }
+    
+    private func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send email. Please check email configuration and try again.", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+            print("Cancel")
+        }
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        sendMailErrorAlert.addAction(cancelAction)
+        sendMailErrorAlert.addAction(okAction)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
+    
+    private func deleteAudioFiles() {
+        conductor.deleteAllFiles()
+        playStopToggleButton.isEnabled = false
+        playStopToggleButton.setTitleColor(.lightGray, for: .normal)
+        playStopToggleButton.layer.borderColor = UIColor.lightGray.cgColor
+        playStopToggleButton.layer.backgroundColor = UIColor.clear.cgColor
+        exportBtn.isEnabled = false
+        deleteAllRecordingsButton.isEnabled = false
+    }
+    
+    // MARK: === Share Activity Controller (More Options) ===
+    
+    private func exportTap() {
+        // Show the share controller
+        if let audioURL: URL = conductor.exportedAudio {
+            let shareText = "Listen to \(conductor.exportedAudioFileName)"
+            let controller = UIActivityViewController(activityItems: [shareText, audioURL], applicationActivities: nil)
+            // Set the email's subject name to the exported audio file name.
+            controller.setValue(self.conductor.exportedAudioFileName, forKey: "subject")
+            controller.completionWithItemsHandler = { activity, success, items, error in
+                self.dismiss(animated: true, completion: nil)
+            }
+            if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+                controller.popoverPresentationController?.sourceView = self.exportBtn
+                controller.modalPresentationStyle = UIModalPresentationStyle.popover
+            }
+            DispatchQueue.main.async {
+                self.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    //MARK: === IBActions ===
+    
     @IBAction func recordToggleAction(_ sender: UIButton) {
         conductor.recordToggle()
         print("conductor.playingState: \(conductor.playingState)")
@@ -66,6 +136,7 @@ class ViewController: UIViewController {
             recordToggleButton.layer.backgroundColor = UIColor.clear.cgColor
             playButtonFormatting()
             exportBtn.isEnabled = true
+            deleteAllRecordingsButton.isEnabled = true
         case .recording:
             recordToggleButton.setTitle("◼︎ Stop", for: .normal)
             recordToggleButton.setTitleColor(.white, for: .normal)
@@ -99,13 +170,21 @@ class ViewController: UIViewController {
         }
     }
     
-    private func playButtonFormatting() {
-        playStopToggleButton.setTitle("▶︎ Play", for: .normal)
-        playStopToggleButton.setTitleColor(.playColor, for: .normal)
-        playStopToggleButton.layer.backgroundColor = UIColor.clear.cgColor
-        playStopToggleButton.layer.borderColor = UIColor.playColor.cgColor
-        playStopToggleButton.isEnabled = true
+    @IBAction func deleteAllRecordingsAction(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: "Delete all recordings", message: "Are you sure?", preferredStyle: .alert)
 
+        // Delete action
+        let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            self.deleteAudioFiles()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true)
     }
     
     @IBAction func triggerKick() {
@@ -120,7 +199,7 @@ class ViewController: UIViewController {
 
         let alertController = UIAlertController(title: "Export Audio Recording", message: "\"\(self.conductor.exportedAudioFile)\"", preferredStyle: .actionSheet)
         
-        // AudioShare
+        // AudioShare SDK
         let audioShareAction = UIAlertAction(title: "AudioShare", style: .default) { (action) in
             self.conductor.exportToAudioShare()
         }
@@ -129,7 +208,7 @@ class ViewController: UIViewController {
             self.exportToEmail()
         }
         // Share
-        let shareAction = UIAlertAction(title: "More sharing options", style: .default) { (action) in
+        let shareAction = UIAlertAction(title: "More", style: .default) { (action) in
             self.exportTap()
         }
         
@@ -141,7 +220,6 @@ class ViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true)
-
     }
     
     @IBAction func audioFormatSelectorAction(_ sender: Any) {
@@ -160,52 +238,6 @@ class ViewController: UIViewController {
         default:
             conductor.audioFormat = .m4a
         }
-    }
-    
-    func exportToEmail() {
-        let configuredMailComposeViewController = emailComposer.configuredMailComposeViewController()
-        if emailComposer.canSendMail() {
-            present(configuredMailComposeViewController, animated: true, completion: nil)
-        } else {
-            showSendMailErrorAlert()
-        }
-    }
-    
-    func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "You device could not send email. Please check email configuration and try again.", preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-            print("Cancel")
-        }
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("OK")
-        }
-        sendMailErrorAlert.addAction(cancelAction)
-        sendMailErrorAlert.addAction(okAction)
-        self.present(sendMailErrorAlert, animated: true, completion: nil)
-    }
-    
-    // MARK: === Share Activity Controller (More Options) ===
-    
-    func exportTap() {
-        // Show the share controller
-        if let audioURL: URL = conductor.exportedAudio {
-            let shareText = "Listen to \(conductor.exportedAudioFileName)"
-            let controller = UIActivityViewController(activityItems: [shareText, audioURL], applicationActivities: nil)
-            // Set the email's subject name to the exported audio file name.
-            controller.setValue(self.conductor.exportedAudioFileName, forKey: "subject")
-            controller.completionWithItemsHandler = { activity, success, items, error in
-                self.dismiss(animated: true, completion: nil)
-            }
-            if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
-                controller.popoverPresentationController?.sourceView = self.exportBtn
-                controller.modalPresentationStyle = UIModalPresentationStyle.popover
-            }
-            DispatchQueue.main.async {
-                self.present(controller, animated: true, completion: nil)
-            }
-        }
-        
     }
     
 }
