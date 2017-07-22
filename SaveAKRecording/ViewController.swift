@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var recordToggleButton: UIButton!
     @IBOutlet weak var playStopToggleButton: UIButton!
     @IBOutlet weak var exportBtn: UIButton!
+    @IBOutlet weak var showRecordingsBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +32,11 @@ class ViewController: UIViewController {
         if (conductor.recordingsFound) {
             exportBtn.isEnabled = true
             deleteAllRecordingsButton.isEnabled = true
+            showRecordingsBtn.isEnabled = true
         } else {
             exportBtn.isEnabled = false
             deleteAllRecordingsButton.isEnabled = false
+            showRecordingsBtn.isEnabled = false
         }
     }
     
@@ -41,14 +44,13 @@ class ViewController: UIViewController {
         recordToggleButton.setTitle("◉ Record", for: .normal)
         recordToggleButton.setTitleColor(.recordColor, for: .normal)
         recordToggleButton.layer.cornerRadius = 5.0
-        
         recordToggleButton.layer.borderWidth = 0.5
         recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor
         playStopToggleButton.setTitle("▶︎ Play", for: .normal)
         playStopToggleButton.layer.cornerRadius = 5.0
         playStopToggleButton.layer.borderWidth = 0.5
-        exportBtn.isEnabled = false
-        playStopToggleButton.isEnabled = false
+//        exportBtn.isEnabled = false
+//        playStopToggleButton.isEnabled = false
     }
     
     private func playButtonFormatting() {
@@ -92,6 +94,7 @@ class ViewController: UIViewController {
         playStopToggleButton.layer.backgroundColor = UIColor.clear.cgColor
         exportBtn.isEnabled = false
         deleteAllRecordingsButton.isEnabled = false
+        showRecordingsBtn.isEnabled = false
     }
     
     // MARK: === Share Activity Controller (More Options) ===
@@ -130,6 +133,7 @@ class ViewController: UIViewController {
             playButtonFormatting()
             exportBtn.isEnabled = true
             deleteAllRecordingsButton.isEnabled = true
+            showRecordingsBtn.isEnabled = true
         case .recording:
             recordToggleButton.setTitle("◼︎ Stop", for: .normal)
             recordToggleButton.setTitleColor(.white, for: .normal)
@@ -190,7 +194,7 @@ class ViewController: UIViewController {
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {
 
-        let alertController = UIAlertController(title: "\"\(self.conductor.exportedAudioFile)\"", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: self.conductor.exportedAudioFile, message: nil, preferredStyle: .actionSheet)
         
         // AudioShare SDK
         let audioShareAction = UIAlertAction(title: "AudioShare", style: .default) { (action) in

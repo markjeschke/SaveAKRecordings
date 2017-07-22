@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NcP-GZ-f4w">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="CN6-FZ-gaf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xKd-ii-xmo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FW0-UA-i0d">
-                                <rect key="frame" x="16" y="42" width="288" height="29"/>
+                                <rect key="frame" x="20" y="35" width="528" height="29"/>
                                 <segments>
                                     <segment title="m4a"/>
                                     <segment title="mp4"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
-                                <rect key="frame" x="49" y="223" width="222" height="38"/>
+                                <rect key="frame" x="173" y="229" width="222" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Export Audio Recording"/>
                                 <connections>
@@ -43,42 +43,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6E-5U-Pj1">
-                                <rect key="frame" x="57" y="271" width="207" height="38"/>
+                                <rect key="frame" x="180.5" y="273" width="207" height="38"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                 <state key="normal" title="Delete All Recordings"/>
                                 <connections>
                                     <action selector="deleteAllRecordingsAction:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="pX6-4A-30N"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-K7-fwm">
-                                <rect key="frame" x="18" y="95" width="285" height="28"/>
-                                <subviews>
-                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="28"/>
-                                        <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
-                                        <state key="normal" title="◉ Record"/>
-                                        <connections>
-                                            <action selector="recordToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Nzc-UF-Iw4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr3-vr-Aaw">
-                                        <rect key="frame" x="165" y="0.0" width="120" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="7fo-Ou-fhd"/>
-                                        </constraints>
-                                        <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
-                                        <state key="normal" title="▶︎ Play"/>
-                                        <connections>
-                                            <action selector="playStopToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Ahs-gg-oP2"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="285" id="IhO-BW-9Fu"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="a3z-E6-kbD">
-                                <rect key="frame" x="58" y="162" width="205" height="38"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="a3z-E6-kbD">
+                                <rect key="frame" x="174.5" y="135" width="220" height="38"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
@@ -89,7 +62,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
-                                        <rect key="frame" x="105" y="0.0" width="100" height="38"/>
+                                        <rect key="frame" x="120" y="0.0" width="100" height="38"/>
                                         <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                         <state key="normal" title="Snare"/>
                                         <connections>
@@ -98,20 +71,61 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lar-9H-LfL">
+                                <rect key="frame" x="195" y="181" width="179" height="38"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                <state key="normal" title="Show Recordings"/>
+                                <connections>
+                                    <segue destination="syo-JK-Nc9" kind="presentation" identifier="Recordings" id="gP7-7A-Ro1"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-K7-fwm">
+                                <rect key="frame" x="142" y="88" width="284" height="28"/>
+                                <subviews>
+                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
+                                        <rect key="frame" x="0.0" y="0.0" width="132" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="132" id="9O4-D1-xW3"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
+                                        <state key="normal" title="◉ Record"/>
+                                        <connections>
+                                            <action selector="recordToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Nzc-UF-Iw4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr3-vr-Aaw">
+                                        <rect key="frame" x="152" y="0.0" width="132" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="132" id="dN7-wc-idF"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
+                                        <state key="normal" title="▶︎ Play"/>
+                                        <connections>
+                                            <action selector="playStopToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Ahs-gg-oP2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="W6E-5U-Pj1" firstAttribute="top" secondItem="YLn-vv-Jk5" secondAttribute="bottom" constant="10" id="0Js-GZ-B4d"/>
+                            <constraint firstItem="W6E-5U-Pj1" firstAttribute="top" secondItem="YLn-vv-Jk5" secondAttribute="bottom" constant="6" id="0Js-GZ-B4d"/>
                             <constraint firstItem="FW0-UA-i0d" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="6pM-SL-cb7"/>
-                            <constraint firstItem="a3z-E6-kbD" firstAttribute="top" secondItem="TRv-K7-fwm" secondAttribute="bottom" constant="39" id="7gc-9y-07p"/>
                             <constraint firstItem="YLn-vv-Jk5" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="8ja-79-xKQ"/>
                             <constraint firstItem="FW0-UA-i0d" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leadingMargin" id="8kb-yB-PiI"/>
-                            <constraint firstItem="TRv-K7-fwm" firstAttribute="top" secondItem="FW0-UA-i0d" secondAttribute="bottom" constant="25" id="FR0-bT-Eju"/>
                             <constraint firstItem="W6E-5U-Pj1" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="GJ3-N6-aS4"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="a3z-E6-kbD" secondAttribute="bottom" constant="23" id="Hhv-uK-ioN"/>
-                            <constraint firstItem="FW0-UA-i0d" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="22" id="REj-Pv-i59"/>
-                            <constraint firstItem="a3z-E6-kbD" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" id="Sqe-9v-8zT"/>
-                            <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="ryi-EG-qiQ"/>
+                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="lar-9H-LfL" secondAttribute="bottom" constant="10" id="Icn-1A-u9n"/>
+                            <constraint firstItem="FW0-UA-i0d" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="15" id="REj-Pv-i59">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="a3z-E6-kbD" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" constant="1" id="Sqe-9v-8zT"/>
+                            <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="lar-9H-LfL" secondAttribute="centerX" id="TwS-70-LGm"/>
+                            <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="FW0-UA-i0d" secondAttribute="centerX" id="UGy-v8-MWu"/>
+                            <constraint firstItem="lar-9H-LfL" firstAttribute="top" secondItem="a3z-E6-kbD" secondAttribute="bottom" constant="8" symbolic="YES" id="UMy-f4-WpR"/>
+                            <constraint firstItem="lar-9H-LfL" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="aJ3-Sk-w78"/>
+                            <constraint firstItem="lar-9H-LfL" firstAttribute="leading" secondItem="YLn-vv-Jk5" secondAttribute="leading" constant="22" id="hSD-Xa-Z5D"/>
+                            <constraint firstItem="a3z-E6-kbD" firstAttribute="top" secondItem="TRv-K7-fwm" secondAttribute="bottom" constant="19" id="kMg-Jj-H7V"/>
+                            <constraint firstItem="TRv-K7-fwm" firstAttribute="top" secondItem="FW0-UA-i0d" secondAttribute="bottom" constant="25" id="tlK-7X-UQ1"/>
                             <constraint firstItem="YLn-vv-Jk5" firstAttribute="centerX" secondItem="W6E-5U-Pj1" secondAttribute="centerX" id="wv9-MW-c0h"/>
                         </constraints>
                     </view>
@@ -122,12 +136,65 @@
                         <outlet property="kickButton" destination="fVj-r0-gxf" id="oz6-zY-pkQ"/>
                         <outlet property="playStopToggleButton" destination="Gr3-vr-Aaw" id="b8B-f9-aoN"/>
                         <outlet property="recordToggleButton" destination="kyH-RI-SuY" id="eU0-mp-Pgn"/>
+                        <outlet property="showRecordingsBtn" destination="lar-9H-LfL" id="VtY-PR-bTI"/>
                         <outlet property="snareButton" destination="15l-py-KvB" id="mqQ-50-3gw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rD4-aA-fb7" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.75" y="130"/>
+        </scene>
+        <!--Recordings-->
+        <scene sceneID="gLL-PM-GCQ">
+            <objects>
+                <tableViewController id="hQy-c0-DgE" customClass="RecordingsTableViewController" customModule="SaveAKRecording" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MYx-fZ-QWt">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="md0-bW-EUz">
+                                <rect key="frame" x="0.0" y="28" width="568" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="md0-bW-EUz" id="gK2-QM-75l">
+                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hQy-c0-DgE" id="CGi-TW-Boj"/>
+                            <outlet property="delegate" destination="hQy-c0-DgE" id="sDl-2g-04k"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recordings" id="pa4-sv-96Z">
+                        <barButtonItem key="backBarButtonItem" title=" " id="yL3-XY-4R8"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Wdb-JO-5ow">
+                            <connections>
+                                <action selector="dismissAction:" destination="hQy-c0-DgE" id="4m2-Rh-GdN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O7O-Cz-PRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1681" y="129"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="D4y-aq-EZf">
+            <objects>
+                <navigationController id="syo-JK-Nc9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eju-4t-Bkk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hQy-c0-DgE" kind="relationship" relationship="rootViewController" id="oLr-fz-IfN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOx-pN-NsD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="129"/>
         </scene>
     </scenes>
 </document>

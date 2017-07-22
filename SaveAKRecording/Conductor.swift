@@ -236,9 +236,6 @@ class Conductor {
         
         recordingPath = documentsFolder[0]
         
-        print("documentsFolder: \(documentsFolder)")
-        print("recordingPath: \(recordingPath)")
-        
         deleteAllFiles()
         
     }
@@ -248,11 +245,19 @@ class Conductor {
 
         do {
             directoryContent = try FileManager.default.contentsOfDirectory(atPath: recordingPath)
+            
+            print("directoryContent now: \(directoryContent)")
             for item in directoryContent {
                 print("Found: \(item)")
+//                if var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+//                    path.appendPathComponent(item)
+//                    print("path.appendPathComponent(item): \(path.appendPathComponent(item))")
+//                }
             }
+            
             if directoryContent.count > 0 {
                 print("directoryContent.count: \(directoryContent.count)")
+                
                 recordingsFound = true
             } else {
                 recordingsFound = false
@@ -265,6 +270,33 @@ class Conductor {
         print("directoryContent.count: \(directoryContent.count)")
         print("recordingsFound: \(recordingsFound)")
         
+    }
+    
+    internal func sizeForLocalFilePath(filePath:String) -> UInt64 {
+        do {
+            let newfilePath = "\(recordingPath)/\(filePath)"
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: newfilePath)
+            
+            if let fileSize = fileAttributes[FileAttributeKey.size]  {
+                return (fileSize as! NSNumber).uint64Value
+            } else {
+                print("Failed to get a size attribute from path: \(newfilePath)")
+            }
+        } catch {
+            print("Failed to get file attributes for local path: \(filePath) with error: \(error)")
+        }
+        return 0
+    }
+    
+    internal func covertToFileString(with size: UInt64) -> String {
+        var convertedValue: Double = Double(size)
+        var multiplyFactor = 0
+        let tokens = ["bytes", "KB", "MB", "GB", "TB", "PB",  "EB",  "ZB", "YB"]
+        while convertedValue > 1024 {
+            convertedValue /= 1024
+            multiplyFactor += 1
+        }
+        return String(format: "%4.1f %@", convertedValue, tokens[multiplyFactor])
     }
     
     internal func deleteAllFiles() {
@@ -299,13 +331,13 @@ class Conductor {
                     print("Errored resetting.")
                 }
             }
-            recordingState = .recording
-            playingState = .disabled
             do {
                 try recorder.record()
             } catch {
                 print("Error recording.")
             }
+            recordingState = .recording
+            playingState = .disabled
         case .recording :
             do {
                 try player.reloadFile()

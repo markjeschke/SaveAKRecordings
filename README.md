@@ -31,3 +31,6 @@ brew install carthage
 carthage update --platform ios
 ```
 Launch the SaveAKRecordings.xcodeproj file, build, and run the project.
+
+### Note:
+You must deploy to an actual device in order to view multiple document files within "Show Recordings."
