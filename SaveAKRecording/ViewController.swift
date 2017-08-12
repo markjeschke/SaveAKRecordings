@@ -190,6 +190,7 @@ class ViewController: UIViewController {
     
     @IBAction func triggerSnare() {
         conductor.playSnare()
+        //
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {

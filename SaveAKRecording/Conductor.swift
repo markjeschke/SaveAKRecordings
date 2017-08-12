@@ -6,9 +6,17 @@
 //  Copyright © 2017 Mark Jeschke. All rights reserved.
 //
 
+import Foundation
 import AudioKit
 
+protocol AudioEngineDelegate {
+    func playbackStateDidChange(playing: Bool)
+    func headphonesStateDidChange(connected: Bool)
+}
+
 class Conductor {
+    
+    var delegate: AudioEngineDelegate?
     
     enum RecordingState {
         case readyToRecord
@@ -48,8 +56,8 @@ class Conductor {
     let audioShareSDK = AudioShare()
     
     // Set instance variables
-    let kickSampler: Instrument
-    let snareSampler: Instrument
+    var kickSampler: Instrument
+    var snareSampler: Instrument
     
     var instrumentMixer = AKMixer()
     var outputMixer = AKMixer()
@@ -61,8 +69,10 @@ class Conductor {
     var snareDelay: AKDelay!
     var snareReverb: AKReverb!
     var snareDistortion: AKDistortion!
-    
+//
     var booster: AKBooster!
+    var tracker: AKFrequencyTracker!
+    var silence: AKBooster!
     var delay: AKDelay!
     var delayMixer: AKDryWetMixer!
     var reverb: AKReverb!
@@ -86,19 +96,10 @@ class Conductor {
     let documentsFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)
     var recordingPath = ""
     
+    var isPlaying = false
+    var shouldBePlaying = false
+    
     init() {
-        
-        // Clean tempFiles !
-        //AKAudioFile.cleanTempDirectory()
-        
-        // Session settings
-        AKSettings.bufferLength = .medium
-        
-        do {
-            try AKSettings.setSession(category: .playAndRecord, with: .mixWithOthers)
-        } catch {
-            AKLog("Could not set session category.")
-        }
         
         self.kickSampler = Instrument(
             pitch: 60,
@@ -113,6 +114,36 @@ class Conductor {
             midiNote: 38,
             midiProgramChange: 1,
             midiContinuousControl: 13)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(audioRouteChangeListener(notification:)),
+            name: NSNotification.Name.AVAudioSessionRouteChange,
+            object: nil)
+        
+        setupAudioKit()
+    }
+    
+    public func setupAudioKit() {
+        AudioKit.stop()
+        
+        AKSettings.defaultToSpeaker = true
+        AKSettings.enableRouteChangeHandling = true
+        AKSettings.playbackWhileMuted = true
+        
+        // Clean tempFiles !
+        //AKAudioFile.cleanTempDirectory()
+        
+        
+        do {
+            if #available(iOS 10.0, *) {
+                try AKSettings.setSession(category: .playAndRecord, with: [.defaultToSpeaker, .allowBluetooth, .allowBluetoothA2DP])
+            } else {
+                // Fallback on earlier versions
+            }
+        } catch {
+            print("Errored setting category.")
+        }
         
         do {
             try self.kickSampler.loadWav(self.kickSampler.samplePath)
@@ -140,7 +171,7 @@ class Conductor {
         kickDistortion.rounding = 0.0
         kickDistortion.softClipGain = 7.0
         kickDistortion.polynomialMix = 0.0
-        kickDistortion.finalMix = 0.3
+        kickDistortion.finalMix = 0.0
         kickDistortion.decimation = 0.6
         kickDistortion.decimationMix = 1.0
         
@@ -151,9 +182,9 @@ class Conductor {
         
         // snare sampler node into a delay
         snareDelay = AKDelay(snareSampler)
-        snareDelay.time = 0.2 // seconds
-        snareDelay.feedback  = 0.2 // Normalized Value 0 - 1
-        snareDelay.dryWetMix = 0.01  // Normalized Value 0 - 1
+        snareDelay.time = 0.5 // seconds
+        snareDelay.feedback  = 0.6 // Normalized Value 0 - 1
+        snareDelay.dryWetMix = 0.0  // Normalized Value 0 - 1
         snareDelay.lowPassCutoff = 15000
         
         // snare distortion
@@ -168,8 +199,11 @@ class Conductor {
         // Combine the ending result of the kick and snare nodes, and combine them with a mixer.
         instrumentMixer = AKMixer(kickReverb, snareReverb)
         
+        tracker = AKFrequencyTracker(instrumentMixer)
+        //silence = AKBooster(tracker, gain: 0)
+        
         // Connect the mixer output to the booster node.
-        booster = AKBooster(instrumentMixer)
+        booster = AKBooster(tracker)
         booster.gain = 1.0
         
         // Connect the booster output to the delay node.
@@ -237,7 +271,7 @@ class Conductor {
         recordingPath = documentsFolder[0]
         
         deleteAllFiles()
-        
+    
     }
     
     // Print out all of the found files in the Documents directory.
@@ -418,5 +452,36 @@ class Conductor {
     internal func exportToAudioShare () {
         audioShareSDK.addSound(from: exportedAudio, withName: exportedAudioFileName)
     }
-    
+
+    @objc private func audioRouteChangeListener(notification: Notification) {
+        let audioRouteChangeReason = notification.userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
+        
+        let headphonesConnected = areHeadphonesConnected
+        switch (audioRouteChangeReason, headphonesConnected) {
+        case (AVAudioSessionRouteChangeReason.newDeviceAvailable.rawValue, true):
+            setupAudioKit()
+            if let delegate = delegate {
+                delegate.headphonesStateDidChange(connected: headphonesConnected)
+            }
+        case (AVAudioSessionRouteChangeReason.oldDeviceUnavailable.rawValue, false):
+            setupAudioKit()
+            if let delegate = delegate {
+                delegate.headphonesStateDidChange(connected: headphonesConnected)
+            }
+        default:
+            break
+        }
+    }
+
+    var areHeadphonesConnected: Bool {
+        let currentRoute = AVAudioSession.sharedInstance().currentRoute
+        for description in currentRoute.outputs {
+            if description.portType == AVAudioSessionPortHeadphones {
+                return true
+            }
+        }
+        return false
+    }
+
+
 }
