@@ -125,8 +125,7 @@ class Conductor {
     }
     
     public func setupAudioKit() {
-        AudioKit.stop()
-        
+
         AKSettings.defaultToSpeaker = true
         AKSettings.enableRouteChangeHandling = true
         AKSettings.playbackWhileMuted = true
@@ -265,8 +264,11 @@ class Conductor {
         AKSettings.defaultToSpeaker = true
         
         // Start the audio engine
-        AudioKit.start()
-        print("Audio engine started")
+        do {
+            try AudioKit.start()
+        } catch {
+            fatalError("Unexpected error: \(error).")
+        }
         
         recordingPath = documentsFolder[0]
         

@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F70EDD751F3F6F58002AB8C0 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70EDD6E1F3F6E22002AB8C0 /* AudioKit.framework */; };
-		F70EDD761F3F6F64002AB8C0 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F70EDD6E1F3F6E22002AB8C0 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DDE0C79EF09F19D31582CD4C /* Pods_SaveAKRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF0AF46A42026DA759ED61D /* Pods_SaveAKRecording.framework */; };
 		F71D19271EF351A300523ACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19261EF351A300523ACB /* AppDelegate.swift */; };
 		F71D19291EF351A300523ACB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D19281EF351A300523ACB /* ViewController.swift */; };
 		F71D192C1EF351A300523ACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71D192A1EF351A300523ACB /* Main.storyboard */; };
@@ -31,7 +30,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F70EDD761F3F6F64002AB8C0 /* AudioKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,7 +37,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F70EDD6E1F3F6E22002AB8C0 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
+		171E921FAC3A59A6920ED97E /* Pods-SaveAKRecording.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveAKRecording.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaveAKRecording/Pods-SaveAKRecording.debug.xcconfig"; sourceTree = "<group>"; };
+		C1ED169EF10C2BE131389E02 /* Pods-SaveAKRecording.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveAKRecording.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaveAKRecording/Pods-SaveAKRecording.release.xcconfig"; sourceTree = "<group>"; };
+		DEF0AF46A42026DA759ED61D /* Pods_SaveAKRecording.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaveAKRecording.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71D19231EF351A300523ACB /* SaveAKRecording.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveAKRecording.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F71D19261EF351A300523ACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F71D19281EF351A300523ACB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,19 +64,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F70EDD751F3F6F58002AB8C0 /* AudioKit.framework in Frameworks */,
+				DDE0C79EF09F19D31582CD4C /* Pods_SaveAKRecording.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F70EDD6D1F3F6E22002AB8C0 /* Frameworks */ = {
+		A66934749AE8DD4D8AB41603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F70EDD6E1F3F6E22002AB8C0 /* AudioKit.framework */,
+				DEF0AF46A42026DA759ED61D /* Pods_SaveAKRecording.framework */,
 			);
-			path = Frameworks;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E81466904A86763314F0EF88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				171E921FAC3A59A6920ED97E /* Pods-SaveAKRecording.debug.xcconfig */,
+				C1ED169EF10C2BE131389E02 /* Pods-SaveAKRecording.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		F71D191A1EF351A300523ACB = {
@@ -84,6 +93,8 @@
 			children = (
 				F71D19251EF351A300523ACB /* SaveAKRecording */,
 				F71D19241EF351A300523ACB /* Products */,
+				E81466904A86763314F0EF88 /* Pods */,
+				A66934749AE8DD4D8AB41603 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,7 +121,6 @@
 				F71D192D1EF351A300523ACB /* Assets.xcassets */,
 				F71D192F1EF351A300523ACB /* LaunchScreen.storyboard */,
 				F71D19321EF351A300523ACB /* Info.plist */,
-				F70EDD6D1F3F6E22002AB8C0 /* Frameworks */,
 				F71D19721EF3545300523ACB /* Sounds */,
 			);
 			path = SaveAKRecording;
@@ -166,6 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F71D194B1EF351A300523ACB /* Build configuration list for PBXNativeTarget "SaveAKRecording" */;
 			buildPhases = (
+				446403F4F5C7ED857A7F17B2 /* [CP] Check Pods Manifest.lock */,
 				F71D191F1EF351A300523ACB /* Sources */,
 				F71D19201EF351A300523ACB /* Frameworks */,
 				F71D19211EF351A300523ACB /* Resources */,
@@ -187,12 +198,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Mark Jeschke";
 				TargetAttributes = {
 					F71D19221EF351A300523ACB = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = JZRGG2W4BA;
+						DevelopmentTeam = D4Z52CBL7L;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -229,6 +240,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		446403F4F5C7ED857A7F17B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SaveAKRecording-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F71D191F1EF351A300523ACB /* Sources */ = {
@@ -279,15 +311,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -329,15 +369,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -364,10 +412,11 @@
 		};
 		F71D194C1EF351A300523ACB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 171E921FAC3A59A6920ED97E /* Pods-SaveAKRecording.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				DEVELOPMENT_TEAM = D4Z52CBL7L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SaveAKRecording/Frameworks",
@@ -385,10 +434,11 @@
 		};
 		F71D194D1EF351A300523ACB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1ED169EF10C2BE131389E02 /* Pods-SaveAKRecording.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = JZRGG2W4BA;
+				DEVELOPMENT_TEAM = D4Z52CBL7L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SaveAKRecording/Frameworks",
