@@ -94,7 +94,7 @@ class Conductor {
     var recordingsFound = false
     var directoryContent = [String()]
     let documentsFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)
-    var recordingPath = ""
+    var recordingPath: String = ""
     
     var isPlaying = false
     var shouldBePlaying = false
@@ -422,11 +422,6 @@ class Conductor {
     }
     
     internal func setExportedAudioPath() {
-
-        if let exportedAudioPath = String(recordingPath) {
-            self.exportedAudioFilePath = exportedAudioPath
-            print("self.exportedAudioFilePath: \(String(describing: self.exportedAudioFilePath))")
-        }
 
         // Concatenate the exported audio file name with the audio format extension.
         self.exportedAudioFile = "\(self.exportedAudioFileName)\(self.audioFormat.rawValue)"
