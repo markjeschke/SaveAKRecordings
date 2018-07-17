@@ -10,7 +10,8 @@ Swift Xcode Project that demonstrates how to record, save, and send audio files,
 
 ## Installation:
 1. Within Terminal, run `git clone git@github.com:markjeschke/SaveAKRecordings.git` in the command line, or download the [zip](https://github.com/markjeschke/SaveAKRecordings/archive/master.zip) to your local drive.
-2. If you have CocoaPods already installed, simply open the `SaveAKRecording.xcworkspace` source, and deploy the app to your iPhone or iPad.
+2. If you have CocoaPods already installed, run `pod install` to install the AudioKit framework.
+3. Open the `SaveAKRecording.xcworkspace` source, and build the app to your iPhone or iPad.
 
 ### If you don't have CocoaPods installed, please follow these directions:
 
