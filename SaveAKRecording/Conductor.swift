@@ -443,11 +443,11 @@ class Conductor {
     }
     
     internal func playKick() {
-        kickSampler.play(noteNumber:kickSampler.pitch, velocity:127, channel: 0)
+        try! kickSampler.play(noteNumber:kickSampler.pitch, velocity:127, channel: 0)
     }
     
     internal func playSnare() {
-        snareSampler.play(noteNumber:snareSampler.pitch, velocity:127, channel: 0)
+        try! snareSampler.play(noteNumber:snareSampler.pitch, velocity:127, channel: 0)
     }
     
     //Mark - Export to AudioShare
