@@ -20,7 +20,7 @@ Swift Xcode Project that demonstrates how to record, save, and send audio files,
 3. Run `pod install` to install the pods that are listed in the Podfile.
 4. Once the installation has completed, open the project by clicking to open `SaveAKRecording.xcworkspace` – not the `SaveAKRecording.xcodeproj`.
 
-### Note: If you're having trouble installing CocoaPods, please refer to their [installation instructions](https://cocoapods.org/#install).
+If you're having trouble installing CocoaPods, please refer to their [installation instructions](https://cocoapods.org/#install).
 
 ### Note:
 You must deploy to an actual device in order to view multiple document files within "Show Recordings."
