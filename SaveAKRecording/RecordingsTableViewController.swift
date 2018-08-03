@@ -39,6 +39,7 @@ class RecordingsTableViewController: UITableViewController {
         let fileName = conductor.directoryContent[indexPath.row]
         let fileToNumber = conductor.sizeForLocalFilePath(filePath: fileName)
         
+        cell.selectionStyle = .none
         cell.textLabel?.text = "\(fileName) \(conductor.covertToFileString(with: fileToNumber))"
 
         return cell

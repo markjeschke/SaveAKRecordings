@@ -9,11 +9,18 @@
 import UIKit
 import MessageUI
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, AudioPlaybackDelegate {
+    
+    func resetPlayerUI() {
+        playButtonFormatting()
+    }
+    
+    
     var conductor = Conductor.sharedInstance
     let emailComposer = EmailComposer()
+    var songClipIsPlaying = false
     
+    @IBOutlet weak var toggleSongClipButton: UIButton!
     @IBOutlet weak var audioFormatSelectorSegmentedControl: UISegmentedControl!
     @IBOutlet weak var kickButton: UIButton!
     @IBOutlet weak var deleteAllRecordingsButton: UIButton!
@@ -28,7 +35,9 @@ class ViewController: UIViewController {
         
         initializeUI()
         
+        conductor.audioPlaybackDelegate = self
         conductor.setExportedAudioPath()
+        
         if (conductor.recordingsFound) {
             exportBtn.isEnabled = true
             deleteAllRecordingsButton.isEnabled = true
@@ -49,8 +58,8 @@ class ViewController: UIViewController {
         playStopToggleButton.setTitle("▶︎ Play", for: .normal)
         playStopToggleButton.layer.cornerRadius = 5.0
         playStopToggleButton.layer.borderWidth = 0.5
-//        exportBtn.isEnabled = false
-//        playStopToggleButton.isEnabled = false
+        exportBtn.isEnabled = false
+        playStopToggleButton.isEnabled = false
     }
     
     private func playButtonFormatting() {
@@ -190,7 +199,19 @@ class ViewController: UIViewController {
     
     @IBAction func triggerSnare() {
         conductor.playSnare()
-        //
+    }
+    
+    @IBAction func playSongClip(_ sender: UIButton) {
+        var playStatus = ""
+        if songClipIsPlaying {
+            conductor.songClipPlayer.stop()
+            playStatus = "Play"
+        } else {
+            conductor.songClipPlayer.play()
+            playStatus = "Stop"
+        }
+        toggleSongClipButton.setTitle("\(playStatus) Song Clip", for: .normal)
+        songClipIsPlaying = !songClipIsPlaying
     }
     
     @IBAction func sendEmailButtonTapped(_ sender: AnyObject) {

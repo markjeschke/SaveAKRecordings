@@ -14,6 +14,10 @@ protocol AudioEngineDelegate {
     func headphonesStateDidChange(connected: Bool)
 }
 
+protocol AudioPlaybackDelegate: class {
+    func resetPlayerUI()
+}
+
 class Conductor {
     
     var delegate: AudioEngineDelegate?
@@ -55,12 +59,20 @@ class Conductor {
     
     let audioShareSDK = AudioShare()
     
+    weak var audioPlaybackDelegate: AudioPlaybackDelegate?
+    
+    let songURL = "Sounds/Isolated-Association.m4a".split(separator: ".")
+    
     // Set instance variables
     var kickSampler: Instrument
     var snareSampler: Instrument
     
     var instrumentMixer = AKMixer()
     var outputMixer = AKMixer()
+    var instrumentSongMixer = AKMixer()
+    
+    var songClipReverb: AKReverb!
+    var songClipMixer: AKDryWetMixer!
     
     var kickDelay: AKDelay!
     var kickReverb: AKReverb!
@@ -69,7 +81,7 @@ class Conductor {
     var snareDelay: AKDelay!
     var snareReverb: AKReverb!
     var snareDistortion: AKDistortion!
-//
+
     var booster: AKBooster!
     var tracker: AKFrequencyTracker!
     var silence: AKBooster!
@@ -84,6 +96,7 @@ class Conductor {
     var playingState: PlayingState = .disabled
     var recorder: AKNodeRecorder!
     var player: AKAudioPlayer!
+    var songClipPlayer: AKAudioPlayer!
     var exportedAudioFileName = "SavedAudioKitFile"
     var exportedAudioFilePath: String = ""
     var exportedAudioFile: String = ""
@@ -243,16 +256,45 @@ class Conductor {
         distortionMixer = AKDryWetMixer(reverbMixer, distortion)
         distortionMixer.balance = 0.5
         
-        // Connect the recorder to the output of the distortionMixer(with reverbMixer).
-        recorder = try? AKNodeRecorder(node: distortionMixer)
+        enum MyError: Error {
+            case FoundNil(String)
+        }
+        
+        // The songURL is split into two strings in an array.
+        print("songURL: \(songURL)")
+        
+        let fileUrl = Bundle.main.path(forResource: "\(songURL[0])", ofType: "\(songURL[1])")
+
+        do {
+            guard let fileUrl = fileUrl else { return }
+            if let url = URL(string: fileUrl) {
+                if let file = try? AKAudioFile(forReading: url) {
+                    songClipPlayer = try AKAudioPlayer(file: file)
+                    songClipPlayer.looping = true
+                } else {
+                    assert(false, "Can't load audio file")
+                }
+            }
+        } catch {
+            fatalError("Player error: \(error)")
+        }
+        
+        songClipReverb = AKReverb(songClipPlayer)
+        songClipReverb.dryWetMix = 0.4
+        songClipReverb.loadFactoryPreset(.largeRoom)
+        
+        instrumentSongMixer = AKMixer(distortionMixer, songClipReverb)
+        
+        // Connect the recorder to the output of the instrumentSongMixer.
+        recorder = try? AKNodeRecorder(node: instrumentSongMixer)
         if let file = recorder.audioFile {
             player = try? AKAudioPlayer(file: file)
         }
-        player.looping = true
-        player.completionHandler = playingEnded
+        player.looping = false
+        player.completionHandler = playingEnded // <= completionHandler won't be called if looping is set to true.
         
-        // Mix the distortionMixer(with reverbMixer) and player node into the outputMixer.
-        outputMixer = AKMixer(distortionMixer, player)
+        // Mix the player  and instrumentSongMixer nodes into the outputMixer.
+        outputMixer = AKMixer(player, instrumentSongMixer)
         
         // Connect the end of the audio chain to the AudioKit engine output.
         AudioKit.output = outputMixer
@@ -282,18 +324,7 @@ class Conductor {
         do {
             directoryContent = try FileManager.default.contentsOfDirectory(atPath: recordingPath)
             
-            print("directoryContent now: \(directoryContent)")
-            for item in directoryContent {
-                print("Found: \(item)")
-//                if var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-//                    path.appendPathComponent(item)
-//                    print("path.appendPathComponent(item): \(path.appendPathComponent(item))")
-//                }
-            }
-            
             if directoryContent.count > 0 {
-                print("directoryContent.count: \(directoryContent.count)")
-                
                 recordingsFound = true
             } else {
                 recordingsFound = false
@@ -301,10 +332,6 @@ class Conductor {
         } catch {
             print("Can't find any items")
         }
-        
-        print("directoryContent: \(directoryContent)")
-        print("directoryContent.count: \(directoryContent.count)")
-        print("recordingsFound: \(recordingsFound)")
         
     }
     
@@ -349,8 +376,9 @@ class Conductor {
     }
     
     internal func playingEnded() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             print("Finished playing the audio file.")
+            self.audioPlaybackDelegate?.resetPlayerUI()
             self.setupUIForPlaying()
         }
     }
