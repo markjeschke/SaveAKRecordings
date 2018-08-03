@@ -8,6 +8,16 @@ Swift Xcode Project that demonstrates how to record, save, and send audio files,
 4. AirDrop
 5. iTunes File Sharing
 
+## Instructions:
+1. Select an audio format from the segmented controller.
+2. Tap the Record button.
+3. Tap the "Kick", "Snare", or "Play Song" button options. The "Kick" and "Snare" buttons trigger short samples via AKMidiSamplers, while the "Play Song" button will play a looping m4a AKAudioFile from an AKAudioPlayer.
+4. Once you're satisfied with your recording, tap the red Stop button to stop the recording.
+5. Tap the green Play to listen to the newly recorded performance.
+6. Tap "Show Recordings" to view the recorded audio files. A new file will only be created a show in the Recordings list when you select a different audio format. Otherwise, any new recording will be replaced with the same name and file format extension.
+7. Tap "Export Audio Recording" and select an AudioShare, Email, or More option.
+8. If you want to delete any of the recordings, you can tap the "Delete All Recordings" button, and and confirm the action.
+
 ## Installation:
 1. Within Terminal, run `git clone git@github.com:markjeschke/SaveAKRecordings.git` in the command line, or download the [zip](https://github.com/markjeschke/SaveAKRecordings/archive/master.zip) to your local drive.
 2. If you have CocoaPods already installed, run `pod install` to install the AudioKit framework.

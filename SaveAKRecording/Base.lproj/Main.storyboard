@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NcP-GZ-f4w">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,117 +18,166 @@
                         <viewControllerLayoutGuide type="bottom" id="CN6-FZ-gaf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xKd-ii-xmo">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FW0-UA-i0d">
-                                <rect key="frame" x="20" y="15" width="528" height="29"/>
-                                <segments>
-                                    <segment title="m4a"/>
-                                    <segment title="mp4"/>
-                                    <segment title="caf"/>
-                                    <segment title="aif"/>
-                                    <segment title="wav"/>
-                                </segments>
-                                <connections>
-                                    <action selector="audioFormatSelectorAction:" destination="NcP-GZ-f4w" eventType="valueChanged" id="YOG-hA-Ej3"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
-                                <rect key="frame" x="173" y="209" width="222" height="38"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Export Audio Recording"/>
-                                <connections>
-                                    <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6E-5U-Pj1">
-                                <rect key="frame" x="180.5" y="253" width="207" height="38"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Delete All Recordings"/>
-                                <connections>
-                                    <action selector="deleteAllRecordingsAction:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="pX6-4A-30N"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="a3z-E6-kbD">
-                                <rect key="frame" x="105" y="115" width="359" height="38"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfn-nv-5o9">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
-                                        <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                        <state key="normal" title="Kick"/>
-                                        <connections>
-                                            <action selector="triggerKick" destination="NcP-GZ-f4w" eventType="touchDown" id="6Av-lg-GLT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
-                                        <rect key="frame" x="95" y="0.0" width="100" height="38"/>
-                                        <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                        <state key="normal" title="Snare"/>
-                                        <connections>
-                                            <action selector="triggerSnare" destination="NcP-GZ-f4w" eventType="touchDown" id="Qr8-bL-7vh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksu-mL-fEU">
-                                        <rect key="frame" x="200" y="0.0" width="159" height="38"/>
-                                        <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                        <state key="normal" title="Play Song Clip"/>
-                                        <connections>
-                                            <action selector="playSongClip:" destination="NcP-GZ-f4w" eventType="touchDown" id="GsV-mD-KmD"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-K7-fwm" userLabel="Recording/Playback">
+                                        <rect key="frame" x="65.333333333333314" y="102" width="243" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
+                                                <rect key="frame" x="0.0" y="2.6666666666666572" width="127" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="iNG-aV-9AA"/>
+                                                    <constraint firstAttribute="height" constant="45" id="sRm-b8-Jgw"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
+                                                <state key="normal" title="◉ Record"/>
+                                                <connections>
+                                                    <action selector="recordToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Nzc-UF-Iw4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr3-vr-Aaw">
+                                                <rect key="frame" x="137" y="2.6666666666666572" width="106" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="A19-Vh-1NG"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="XVn-Ul-5Ig"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
+                                                <state key="normal" title="▶︎ Play"/>
+                                                <connections>
+                                                    <action selector="playStopToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Ahs-gg-oP2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3bv-fS-Srh"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3z-E6-kbD" userLabel="Play audio clips">
+                                        <rect key="frame" x="28" y="177" width="318" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVj-r0-gxf">
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="60"/>
+                                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                <state key="normal" title="Kick"/>
+                                                <connections>
+                                                    <action selector="triggerKick" destination="NcP-GZ-f4w" eventType="touchDown" id="6Av-lg-GLT"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-py-KvB">
+                                                <rect key="frame" x="90" y="0.0" width="100" height="60"/>
+                                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                <state key="normal" title="Snare"/>
+                                                <connections>
+                                                    <action selector="triggerSnare" destination="NcP-GZ-f4w" eventType="touchDown" id="Qr8-bL-7vh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksu-mL-fEU">
+                                                <rect key="frame" x="190" y="0.0" width="128" height="60"/>
+                                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                <state key="normal" title="Play Song"/>
+                                                <connections>
+                                                    <action selector="playSongClip:" destination="NcP-GZ-f4w" eventType="touchDown" id="GsV-mD-KmD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="SQa-QJ-OUC"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-CW-0Iq" userLabel="Recording options">
+                                        <rect key="frame" x="31" y="247" width="310" height="165"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lar-9H-LfL">
+                                                <rect key="frame" x="65.666666666666686" y="0.0" width="179" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="3gh-x2-u1D"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                <state key="normal" title="Show Recordings"/>
+                                                <connections>
+                                                    <segue destination="syo-JK-Nc9" kind="presentation" identifier="Recordings" id="gP7-7A-Ro1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-vv-Jk5">
+                                                <rect key="frame" x="44" y="60" width="222" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="wZW-zZ-bBF"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                <state key="normal" title="Export Audio Recording"/>
+                                                <connections>
+                                                    <action selector="sendEmailButtonTapped:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="6QY-I4-kXc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6E-5U-Pj1">
+                                                <rect key="frame" x="51.666666666666686" y="120" width="207" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="4Ry-VU-qM4"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                <state key="normal" title="Delete All Recordings"/>
+                                                <connections>
+                                                    <action selector="deleteAllRecordingsAction:" destination="NcP-GZ-f4w" eventType="touchUpInside" id="pX6-4A-30N"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="310" id="w0e-Iy-1Rg"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-3b-bXI">
+                                        <rect key="frame" x="37" y="20" width="300" height="62"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an audio format for export:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ia0-aM-YNI">
+                                                <rect key="frame" x="41.666666666666686" y="0.0" width="217" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FW0-UA-i0d">
+                                                <rect key="frame" x="0.0" y="27" width="300" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="3D1-kj-dbA"/>
+                                                    <constraint firstAttribute="height" constant="35" id="I92-T6-s5Y"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="m4a"/>
+                                                    <segment title="mp4"/>
+                                                    <segment title="caf"/>
+                                                    <segment title="aif"/>
+                                                    <segment title="wav"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="audioFormatSelectorAction:" destination="NcP-GZ-f4w" eventType="valueChanged" id="YOG-hA-Ej3"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lar-9H-LfL">
-                                <rect key="frame" x="195" y="161" width="179" height="38"/>
-                                <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                <state key="normal" title="Show Recordings"/>
-                                <connections>
-                                    <segue destination="syo-JK-Nc9" kind="presentation" identifier="Recordings" id="gP7-7A-Ro1"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TRv-K7-fwm">
-                                <rect key="frame" x="157.5" y="68" width="253" height="28"/>
-                                <subviews>
-                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyH-RI-SuY">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="28"/>
-                                        <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
-                                        <state key="normal" title="◉ Record"/>
-                                        <connections>
-                                            <action selector="recordToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Nzc-UF-Iw4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr3-vr-Aaw">
-                                        <rect key="frame" x="147" y="0.0" width="106" height="28"/>
-                                        <inset key="contentEdgeInsets" minX="30" minY="5" maxX="30" maxY="5"/>
-                                        <state key="normal" title="▶︎ Play"/>
-                                        <connections>
-                                            <action selector="playStopToggleAction:" destination="NcP-GZ-f4w" eventType="touchDown" id="Ahs-gg-oP2"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YZE-CW-0Iq" secondAttribute="bottom" id="JrB-8k-9Sy"/>
+                                    <constraint firstItem="TRv-K7-fwm" firstAttribute="top" secondItem="FW0-UA-i0d" secondAttribute="bottom" constant="20" id="KJz-hl-cqM"/>
+                                    <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="yfn-nv-5o9" secondAttribute="centerX" constant="-1" id="LTL-gg-VLH"/>
+                                    <constraint firstItem="a3z-E6-kbD" firstAttribute="centerX" secondItem="yfn-nv-5o9" secondAttribute="centerX" id="Oru-1y-JWW"/>
+                                    <constraint firstItem="SWZ-3b-bXI" firstAttribute="centerX" secondItem="yfn-nv-5o9" secondAttribute="centerX" id="QFl-8J-G81"/>
+                                    <constraint firstAttribute="trailing" secondItem="YZE-CW-0Iq" secondAttribute="trailing" constant="34" id="aGf-3R-Vco"/>
+                                    <constraint firstItem="YZE-CW-0Iq" firstAttribute="centerX" secondItem="yfn-nv-5o9" secondAttribute="centerX" constant="-1.5" id="gN6-Cy-Sel"/>
+                                    <constraint firstItem="SWZ-3b-bXI" firstAttribute="top" secondItem="yfn-nv-5o9" secondAttribute="top" constant="20" id="qLi-p6-ONN"/>
+                                    <constraint firstItem="YZE-CW-0Iq" firstAttribute="top" secondItem="a3z-E6-kbD" secondAttribute="bottom" constant="10" id="t2z-UQ-lVn"/>
+                                    <constraint firstItem="a3z-E6-kbD" firstAttribute="top" secondItem="TRv-K7-fwm" secondAttribute="bottom" constant="25" id="t2z-xw-zLi"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="W6E-5U-Pj1" firstAttribute="top" secondItem="YLn-vv-Jk5" secondAttribute="bottom" constant="6" id="0Js-GZ-B4d"/>
-                            <constraint firstItem="FW0-UA-i0d" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="6pM-SL-cb7"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="8ja-79-xKQ"/>
-                            <constraint firstItem="FW0-UA-i0d" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leadingMargin" id="8kb-yB-PiI"/>
-                            <constraint firstItem="W6E-5U-Pj1" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="GJ3-N6-aS4"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="top" secondItem="lar-9H-LfL" secondAttribute="bottom" constant="10" id="Icn-1A-u9n"/>
-                            <constraint firstItem="FW0-UA-i0d" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" constant="15" id="REj-Pv-i59">
-                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
-                            </constraint>
-                            <constraint firstItem="a3z-E6-kbD" firstAttribute="centerX" secondItem="YLn-vv-Jk5" secondAttribute="centerX" constant="1" id="Sqe-9v-8zT"/>
-                            <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="lar-9H-LfL" secondAttribute="centerX" id="TwS-70-LGm"/>
-                            <constraint firstItem="TRv-K7-fwm" firstAttribute="centerX" secondItem="FW0-UA-i0d" secondAttribute="centerX" id="UGy-v8-MWu"/>
-                            <constraint firstItem="lar-9H-LfL" firstAttribute="top" secondItem="a3z-E6-kbD" secondAttribute="bottom" constant="8" symbolic="YES" id="UMy-f4-WpR"/>
-                            <constraint firstItem="lar-9H-LfL" firstAttribute="centerX" secondItem="xKd-ii-xmo" secondAttribute="centerX" id="aJ3-Sk-w78"/>
-                            <constraint firstItem="lar-9H-LfL" firstAttribute="leading" secondItem="YLn-vv-Jk5" secondAttribute="leading" constant="22" id="hSD-Xa-Z5D"/>
-                            <constraint firstItem="a3z-E6-kbD" firstAttribute="top" secondItem="TRv-K7-fwm" secondAttribute="bottom" constant="19" id="kMg-Jj-H7V"/>
-                            <constraint firstItem="TRv-K7-fwm" firstAttribute="top" secondItem="FW0-UA-i0d" secondAttribute="bottom" constant="25" id="tlK-7X-UQ1"/>
-                            <constraint firstItem="YLn-vv-Jk5" firstAttribute="centerX" secondItem="W6E-5U-Pj1" secondAttribute="centerX" id="wv9-MW-c0h"/>
+                            <constraint firstItem="yfn-nv-5o9" firstAttribute="leading" secondItem="xKd-ii-xmo" secondAttribute="leading" id="2ay-Ie-eGy"/>
+                            <constraint firstAttribute="trailing" secondItem="yfn-nv-5o9" secondAttribute="trailing" id="4lv-nM-k6l"/>
+                            <constraint firstItem="yfn-nv-5o9" firstAttribute="top" secondItem="awU-hL-SLj" secondAttribute="bottom" id="QKn-2h-iCX"/>
+                            <constraint firstItem="CN6-FZ-gaf" firstAttribute="top" secondItem="yfn-nv-5o9" secondAttribute="bottom" id="UQM-nt-gca"/>
                         </constraints>
                     </view>
                     <connections>
@@ -146,22 +194,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rD4-aA-fb7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.75" y="130"/>
+            <point key="canvasLocation" x="138.38028169014083" y="129.375"/>
         </scene>
         <!--Recordings-->
         <scene sceneID="gLL-PM-GCQ">
             <objects>
                 <tableViewController id="hQy-c0-DgE" customClass="RecordingsTableViewController" customModule="SaveAKRecording" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MYx-fZ-QWt">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="md0-bW-EUz">
-                                <rect key="frame" x="0.0" y="28" width="568" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="md0-bW-EUz" id="gK2-QM-75l">
-                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -189,7 +237,7 @@
             <objects>
                 <navigationController id="syo-JK-Nc9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eju-4t-Bkk">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="32"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

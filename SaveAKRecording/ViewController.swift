@@ -11,11 +11,6 @@ import MessageUI
 
 class ViewController: UIViewController, AudioPlaybackDelegate {
     
-    func resetPlayerUI() {
-        playButtonFormatting()
-    }
-    
-    
     var conductor = Conductor.sharedInstance
     let emailComposer = EmailComposer()
     var songClipIsPlaying = false
@@ -50,16 +45,20 @@ class ViewController: UIViewController, AudioPlaybackDelegate {
     }
     
     private func initializeUI() {
-        recordToggleButton.setTitle("◉ Record", for: .normal)
-        recordToggleButton.setTitleColor(.recordColor, for: .normal)
-        recordToggleButton.layer.cornerRadius = 5.0
-        recordToggleButton.layer.borderWidth = 0.5
-        recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor
+        recordButtonFormatting()
         playStopToggleButton.setTitle("▶︎ Play", for: .normal)
         playStopToggleButton.layer.cornerRadius = 5.0
         playStopToggleButton.layer.borderWidth = 0.5
         exportBtn.isEnabled = false
         playStopToggleButton.isEnabled = false
+    }
+    
+    private func recordButtonFormatting() {
+        recordToggleButton.setTitle("◉ Record", for: .normal)
+        recordToggleButton.setTitleColor(.recordColor, for: .normal)
+        recordToggleButton.layer.cornerRadius = 5.0
+        recordToggleButton.layer.borderWidth = 0.5
+        recordToggleButton.layer.borderColor = UIColor.recordColor.cgColor
     }
     
     private func playButtonFormatting() {
@@ -68,6 +67,12 @@ class ViewController: UIViewController, AudioPlaybackDelegate {
         playStopToggleButton.layer.backgroundColor = UIColor.clear.cgColor
         playStopToggleButton.layer.borderColor = UIColor.playColor.cgColor
         playStopToggleButton.isEnabled = true
+    }
+    
+    // This AudioPlaybackDelegate function is called from the Conductor class when the audio file has finished playing.
+    internal func resetPlayerUI() {
+        playButtonFormatting()
+        recordButtonFormatting()
     }
     
     // MARK: === Export via Email ===
@@ -210,7 +215,7 @@ class ViewController: UIViewController, AudioPlaybackDelegate {
             conductor.songClipPlayer.play()
             playStatus = "Stop"
         }
-        toggleSongClipButton.setTitle("\(playStatus) Song Clip", for: .normal)
+        toggleSongClipButton.setTitle("\(playStatus) Song", for: .normal)
         songClipIsPlaying = !songClipIsPlaying
     }
     

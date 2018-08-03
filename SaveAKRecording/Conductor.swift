@@ -61,7 +61,7 @@ class Conductor {
     
     weak var audioPlaybackDelegate: AudioPlaybackDelegate?
     
-    let songURL = "Sounds/Isolated-Association.m4a".split(separator: ".")
+    let songURL = "Sounds/Isolated-Association.m4a"
     
     // Set instance variables
     var kickSampler: Instrument
@@ -260,10 +260,12 @@ class Conductor {
             case FoundNil(String)
         }
         
-        // The songURL is split into two strings in an array.
-        print("songURL: \(songURL)")
+        // The songURL ("Sounds/Isolated-Association.m4a") is split into two strings in an array.
+        let songURLSplit = songURL.split(separator: ".")
         
-        let fileUrl = Bundle.main.path(forResource: "\(songURL[0])", ofType: "\(songURL[1])")
+        print("songURL: \(songURLSplit)")
+        
+        let fileUrl = Bundle.main.path(forResource: "\(songURLSplit[0])", ofType: "\(songURLSplit[1])")
 
         do {
             guard let fileUrl = fileUrl else { return }
