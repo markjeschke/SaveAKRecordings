@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 public extension UIColor {
-    public class var recordColor: UIColor {
+    class var recordColor: UIColor {
         return UIColor(red:200/255, green:0/255, blue:0/255, alpha:1.0)
     }
-    public class var playColor: UIColor {
+    class var playColor: UIColor {
         return UIColor(red:0/255, green:200/255, blue:0/255, alpha:1.0)
     }
-    public class var defaultColor: UIColor {
+    class var defaultColor: UIColor {
         return UIColor(red:10/255, green:96/255, blue:255/255, alpha:1.0)
     }
 }

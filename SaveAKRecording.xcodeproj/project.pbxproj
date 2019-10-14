@@ -198,7 +198,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Mark Jeschke";
 				TargetAttributes = {
 					F71D19221EF351A300523ACB = {
@@ -216,7 +216,7 @@
 			};
 			buildConfigurationList = F71D191E1EF351A300523ACB /* Build configuration list for PBXProject "SaveAKRecording" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
